@@ -1,0 +1,14 @@
+it:
+  spree:
+    admin:
+      tab:
+        handbags: "Handbags"
+    new_handbag: "Nuovo Handbag"
+    listing_handbags: "Lista Handbags"
+    editing_handbag: "Modifica Handbag"
+  activerecord:
+    attributes:
+      spree/handbag:
+        make: Make
+        colour: Colour
+        position: Position
