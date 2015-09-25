@@ -4,6 +4,7 @@ class CreateSpreeHandbags < ActiveRecord::Migration
       t.string :make
       t.string :colour
       t.integer :position
+      t.belongs_to :user, index: true
       t.timestamps
     end
   end
