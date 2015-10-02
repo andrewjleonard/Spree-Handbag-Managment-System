@@ -1,5 +1,10 @@
 <div data-hook="admin_handbag_form_fields" class="row">
   <div class="col-md-6">
+      <%= f.field_container :user_id, class: ['form-group'] do %>
+      <%= f.label :user_id %>
+      <%= f.collection_select :user_id, Spree::User.all, :id, :email, :prompt=>true, class: 'form-control' %>
+      <%= error_message_on :handbag, :user_id %>
+    <% end %>
     <%= f.field_container :make, class: ['form-group'] do %>
       <%= f.label :make %>
       <%= f.text_field :make, class: 'form-control' %>
@@ -10,5 +15,7 @@
       <%= f.text_field :colour, class: 'form-control' %>
       <%= error_message_on :handbag, :colour %>
     <% end %>
+
+
   </div>
 </div>

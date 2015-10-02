@@ -6,7 +6,6 @@ module Spree
       end
       def new
          @handbag = Handbag.new
-         @users = Spree::User.all
      end
     end
   end

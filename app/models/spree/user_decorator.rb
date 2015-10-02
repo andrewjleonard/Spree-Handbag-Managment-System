@@ -1,4 +1,4 @@
 Spree::User.class_eval do
-   has_many :handbags , class_name: Spree::Handbag ,:foreign_key => "handbag_id"
-
+   has_many :handbags , class_name: Spree::Handbag, dependent: :destroy
+   has_many :posts , class_name: Spree::Post, dependent: :destroy
 end
