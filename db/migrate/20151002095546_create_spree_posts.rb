@@ -9,7 +9,6 @@ class CreateSpreePosts < ActiveRecord::Migration
       add_index :spree_posts, [:user_id, :created_at]
       add_foreign_key :spree_posts, :spree_users, column: :user_id
       add_foreign_key :spree_posts, :spree_handbags, column: :handbag_id
-
   end
 
   def self.down

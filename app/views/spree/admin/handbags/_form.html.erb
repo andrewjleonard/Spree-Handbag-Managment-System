@@ -5,6 +5,21 @@
       <%= f.collection_select :user_id, Spree::User.all, :id, :email, :prompt=>true, class: 'form-control' %>
       <%= error_message_on :handbag, :user_id %>
     <% end %>
+    <%= f.field_container :is_clean do %>
+    <%= f.label :is_clean, class: ['checkbox-inline'] %>
+    <%= f.error_message_on :is_clean %>
+    <%= f.check_box :is_clean %>
+    <% end %>
+        <%= f.field_container :is_repair do %>
+    <%= f.label :is_repair, class: ['checkbox-inline'] %>
+    <%= f.error_message_on :is_repair %>
+    <%= f.check_box :is_repair %>
+    <% end %>
+        <%= f.field_container :is_colour do %>
+    <%= f.label :is_colour, class: ['checkbox-inline'] %>
+    <%= f.error_message_on :is_colour %>
+    <%= f.check_box :is_colour %>
+    <% end %>
     <%= f.field_container :make, class: ['form-group'] do %>
       <%= f.label :make %>
       <%= f.text_field :make, class: 'form-control' %>
@@ -15,7 +30,35 @@
       <%= f.text_field :colour, class: 'form-control' %>
       <%= error_message_on :handbag, :colour %>
     <% end %>
-
-
-  </div>
+      <%= f.field_container :security_tag, class: ['form-group'] do %>
+      <%= f.label :security_tag %>
+      <%= f.text_field :security_tag, class: 'form-control' %>
+      <%= error_message_on :handbag, :security_tag %>
+    <% end %>
+      <%= f.field_container :invoice_number, class: ['form-group'] do %>
+      <%= f.label :invoice_number %>
+      <%= f.text_field :invoice_number, class: 'form-control' %>
+      <%= error_message_on :handbag, :invoice_number %>
+    <% end %>
+      <%= f.field_container :dust_bag_description, class: ['form-group'] do %>
+      <%= f.label :dust_bag_description %>
+      <%= f.text_area :dust_bag_description, class: 'form-control' %>
+      <%= error_message_on :handbag, :dust_bag_description %>
+    <% end %>
+      <%= f.field_container :arrival_date, class: ['form-group'] do %>
+      <%= f.label :arrival_date %>
+      <%= f.text_field :arrival_date, :class => 'datepicker form-control' %>      
+      <%= error_message_on :handbag, :arrival_date %>
+    <% end %>
+      <%= f.field_container :completion_date, class: ['form-group'] do %>
+      <%= f.label :completion_date %>
+      <%= f.text_field :completion_date, :class => 'datepicker form-control' %>      
+      <%= error_message_on :handbag, :completion_date %>
+    <% end %>
+          <%= f.field_container :entry_details, class: ['form-group'] do %>
+      <%= f.label :entry_details %>
+      <%= f.text_area :entry_details, class: ['form-control'] %>      
+      <%= error_message_on :handbag, :entry_details %>
+    <% end %>
+    </div>
 </div>
