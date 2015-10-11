@@ -24,7 +24,7 @@
 
     <ul class="collapse nav nav-pills nav-stacked" id="sidebar-hms-technical">
 
-  <li><a href="/admin/handbags/cleaning">Cleaning</a></li>
+  <li><a href="/admin/handbags/clean">Clean</a></li>
   <li><a href="/admin/handbags/repair">Repair</a></li>
   <li><a href="/admin/handbags/colour">Colour</a></li>
   <li><a href="/admin/handbags/limbo">Limbo</a></li>

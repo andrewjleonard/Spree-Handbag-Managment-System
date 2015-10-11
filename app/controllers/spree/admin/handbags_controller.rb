@@ -20,6 +20,12 @@ module Spree
       def show
         @handbags = Spree::Handbag.find(params[:id])
       end
+      def clean_completed
+          @handbag = Spree::Handbag.find params[:id]
+          @handbag.stage = 1
+          @handbag.save
+          expect(flash[:success]).to eq("Handbag #{@handbag.id.inspect} has been successfully updated!")
+end 
       end
   end
 end

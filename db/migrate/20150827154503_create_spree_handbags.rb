@@ -8,11 +8,9 @@ class CreateSpreeHandbags < ActiveRecord::Migration
       t.text :dust_bag_description
       t.text :entry_details
       t.boolean :is_clean
-      t.boolean :is_clean_complete
       t.boolean :is_repair
-      t.boolean :is_repair_complete
       t.boolean :is_colour
-      t.boolean :is_colour_complete
+      t.integer :stage
       t.datetime :arrival_date
       t.datetime :completion_date
       t.boolean :is_complete
