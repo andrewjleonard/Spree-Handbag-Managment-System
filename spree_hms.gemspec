@@ -28,4 +28,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'selenium-webdriver'
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'carrierwave', '~> 0.10.0'
+  s.add_development_dependency 'mini_magick', '~> 3.8.0'
+  s.add_development_dependency 'fog', '~> 1.26.0'
 end
