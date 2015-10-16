@@ -47,6 +47,7 @@ Colour: <strong><%= @handbag.is_colour? %></strong>
              <li id="micropost-<%= micropost.id %>">
               <span class="user"><%= micropost.user.email %></span>
               <span class="content"><%= micropost.content %></span>
+              <%= image_tag micropost.picture.url if micropost.picture? %>
               <span class="timestamp">
                 Added <%= time_ago_in_words(micropost.created_at) %> ago.
               </span>
@@ -59,13 +60,16 @@ Colour: <strong><%= @handbag.is_colour? %></strong>
     <% end %>
   </div>
     <div class="col-md-4">
-<%= form_for(:micropost, :url => admin_microposts_url) do |f| %>
+<%= form_for(:micropost, :url => admin_microposts_url, html: { multipart: true }) do |f| %>
   <%= render 'spree/shared/error_messages', target: @micropost %>
   <div class="field">
     <%= f.text_area :content, placeholder: "Compose new post...", style: 'width:100%' %>
   </div>
    <%= f.hidden_field :handbag_id, :value => @handbag.id %>
   <%= f.submit "Post", class: "btn btn-primary" %>
+  <span class="picture">
+<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+  </span>
 <% end %>
   </div>
 

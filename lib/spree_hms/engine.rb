@@ -1,6 +1,7 @@
 module SpreeHms
   class Engine < Rails::Engine
     require 'spree/core'
+    config.autoload_paths += Dir["#{config.root}/app/uploaders"]
     isolate_namespace Spree
     engine_name 'spree_hms'
 
