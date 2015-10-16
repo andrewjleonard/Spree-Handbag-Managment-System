@@ -23,9 +23,7 @@
         <td><%= link_to handbag.colour, object_url(handbag) %></td>
 
         <td data-hook="admin_handbags_index_row_actions" class="actions text-right">
-          <%= link_to_edit handbag, no_text: true %>
-          <%= link_to_delete handbag, no_text: true %>
-          <%= link_to_with_icon('check', 'Complete', clean_completed_admin_handbag_path(handbag),no_text: true,:remote=> true, :method => :put,data: { confirm: "Are you sure?" }, class: 'btn btn-success btn-sm') %>
+          <%= link_to_with_icon('check', 'Complete', clean_completed_admin_handbag_path(handbag),no_text: true,:remote=> true, :method => :put,data: { confirm: "Are you sure?" }, class: 'btn btn-success btn-sm complete-resource') %>
         </td>
       </tr>
     <% end %>

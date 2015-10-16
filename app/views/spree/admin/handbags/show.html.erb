@@ -1,1 +1,72 @@
-<%= @handbag.make %>, <%= @handbag.colour %>
+
+<div class="row">
+  <div class="col-md-3">
+Make: <strong><%= @handbag.make %></strong>
+</div>
+  <div class="col-md-3">
+Colour: <strong><%= @handbag.colour %></strong>
+</div>
+  <div class="col-md-3">
+Security: <strong><%= @handbag.security_tag %></strong>
+</div>
+  <div class="col-md-3">
+Invoice: <strong><%= @handbag.invoice_number %></strong>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+Clean: <strong><%= @handbag.is_clean? %></strong>
+</div>
+  <div class="col-md-3">
+Repair: <strong><%= @handbag.is_repair? %></strong>
+</div>
+  <div class="col-md-3">
+Colour: <strong><%= @handbag.is_colour? %></strong>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+<%= @handbag.make %>
+</div>
+  <div class="col-md-3">
+<%= @handbag.make %>
+</div>
+  <div class="col-md-3">
+<%= @handbag.make %>
+</div>
+  <div class="col-md-3">
+<%= @handbag.make %>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-8">
+     <% if @handbag.microposts.any? %>
+        <h3>Posts (<%= @handbag.microposts.count %>)</h3>
+        <ol class="microposts">
+          <% @handbag.microposts.each do |micropost| %>
+             <li id="micropost-<%= micropost.id %>">
+              <span class="user"><%= micropost.user.email %></span>
+              <span class="content"><%= micropost.content %></span>
+              <span class="timestamp">
+                Added <%= time_ago_in_words(micropost.created_at) %> ago.
+              </span>
+            </li>
+          <% end %>
+        </ol>
+      <%= paginate @microposts %>
+      /* Needs updating to work. */
+
+    <% end %>
+  </div>
+    <div class="col-md-4">
+<%= form_for(:micropost, :url => admin_microposts_url) do |f| %>
+  <%= render 'spree/shared/error_messages', target: @micropost %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Compose new post...", style: 'width:100%' %>
+  </div>
+   <%= f.hidden_field :handbag_id, :value => @handbag.id %>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>
+  </div>
+
+</div>

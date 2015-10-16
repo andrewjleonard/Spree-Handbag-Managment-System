@@ -1,7 +1,7 @@
 module Spree
   class Handbag < ActiveRecord::Base
 	belongs_to :user
-	has_many :posts , class_name: Spree::Post, dependent: :destroy
+	has_many :microposts , class_name: Spree::Micropost, dependent: :destroy
 	validates :make,:colour,:arrival_date,:completion_date,:user_id, presence: true
 	scope :is_clean, -> { where('is_clean IS true AND stage = 1') }
 	scope :is_repair, -> { where('is_repair IS true AND stage = 2') }

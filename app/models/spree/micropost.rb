@@ -1,5 +1,5 @@
 module Spree
-  class Post < ActiveRecord::Base
+  class Micropost < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :handbag
 	default_scope -> { order(created_at: :desc) }
