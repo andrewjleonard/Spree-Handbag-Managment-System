@@ -3,28 +3,31 @@
 <% end %>
 
 <% content_for :page_actions do %>
-  <%= button_link_to Spree.t(:new_handbag), new_object_url, class: 'btn-success', icon: 'add', id: 'admin_new_handbag_link' %>
+
 <% end if can?(:create, Spree::Handbag) %>
 
 <table class="table sortable" id="listing_handbags" data-hook data-sortable-link="<%= update_positions_admin_handbags_url %>">
   <thead>
     <tr data-hook="admin_handbags_index_headers">
-      <th class="no-border"></th>
+      <th class="no-border"><%= t(:id, scope: 'activerecord.attributes.spree/handbag') %></th>
       <th><%= t(:make, scope: 'activerecord.attributes.spree/handbag') %></th>
       <th><%= t(:colour, scope: 'activerecord.attributes.spree/handbag') %></th>
+      <th><%= t(:security_tag, scope: 'activerecord.attributes.spree/handbag') %></th>
+      <th><%= t(:completion_date, scope: 'activerecord.attributes.spree/handbag') %></th>
       <th data-hook="admin_handbags_index_header_actions" class="actions"></th>
     </tr>
   </thead>
   <tbody>
     <% @handbags.each do |handbag| %>
       <tr id="<%= spree_dom_id handbag %>" data-hook="admin_handbags_index_rows" class="<%= cycle('odd', 'even')%>">
-        <td class="move-handle"><span class="icon icon-move handle"></span></td>
+        <td><%= link_to handbag.id, object_url(handbag) %></td>
         <td><%= link_to handbag.make, object_url(handbag) %></td>
         <td><%= link_to handbag.colour, object_url(handbag) %></td>
+        <td><%= link_to handbag.security_tag, object_url(handbag) %></td>
+        <td><%= link_to handbag.completion_date.strftime("%d/%m/%Y"), object_url(handbag) %></td>
 
         <td data-hook="admin_handbags_index_row_actions" class="actions text-right">
-          <%= link_to_edit handbag, no_text: true %>
-          <%= link_to_delete handbag, no_text: true %>
+          <%= link_to_with_icon('check', 'Complete', repair_completed_admin_handbag_path(handbag), :remote=> true, :method => :put,data: { confirm: "Are you sure?" }, class: 'btn btn-success btn-sm complete-resource') %>
         </td>
       </tr>
     <% end %>

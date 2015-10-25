@@ -64,6 +64,42 @@
         </td>
       </tr>
 
+                  <tr>
+        <td data-hook>
+          <strong><%= Spree.t(:work_details) %>:</strong>
+        </td>
+        <td id='handbag_work_details'>
+            <%= Spree.t(@handbag.work_details) %>
+        </td>
+      </tr>
+
+                  <tr>
+        <td data-hook>
+          <strong><%= Spree.t(:dust_bag) %>:</strong>
+        </td>
+        <td id='handbag_dust_bag'>
+            <%= Spree.t(@handbag.dust_bag) %>
+        </td>
+      </tr>
+
+                        <tr>
+        <td data-hook>
+          <strong><%= Spree.t(:arrival_date) %>:</strong>
+        </td>
+        <td id='handbag_arrival_date'>
+            <%= Spree.t(@handbag.arrival_date.strftime("%d/%m/%Y")) %>
+        </td>
+      </tr>
+
+                        <tr>
+        <td data-hook>
+          <strong><%= Spree.t(:completion_date) %>:</strong>
+        </td>
+        <td id='handbag_completion_date'>
+            <%= Spree.t(@handbag.completion_date.strftime("%d/%m/%Y")) %>
+        </td>
+      </tr>
+
     </tbody>
   </table>
 </div>

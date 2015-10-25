@@ -6,7 +6,7 @@ module Spree
 	validates :make,:colour,:arrival_date,:completion_date,:user_id, presence: true
 
     acts_as_list
-    default_scope { order(:position) }
+    default_scope { order(:completion_date).reverse_order }
 
     def init
     	if is_clean == true
@@ -18,7 +18,7 @@ module Spree
   		end
     end
    	
-   	scope :is_clean, -> { where('is_clean IS true AND stage = 1') }
+  scope :is_clean, -> { where('is_clean IS true AND stage = 1') }
 	scope :is_repair, -> { where('is_repair IS true AND stage = 2') }
 	scope :is_colour, -> { where('is_colour IS true AND stage = 3') }
 
