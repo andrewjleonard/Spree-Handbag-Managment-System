@@ -24,6 +24,9 @@ module Spree
     def micropost_params
       params.require(:micropost).permit(:content, :picture)
     end
+      def model_class
+        Micropost
+      end
 end
 end
 end

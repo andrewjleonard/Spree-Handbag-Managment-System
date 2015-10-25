@@ -1,49 +1,29 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:handbag) %> ID: <%= @handbag.id %>
+<% end %>
 
 <div class="row">
-  <div class="col-md-3">
-Make: <strong><%= @handbag.make %></strong>
+  <div class="col-md-8">
+<%= render partial: 'spree/admin/shared/handbag_summary' %>
 </div>
-  <div class="col-md-3">
-Colour: <strong><%= @handbag.colour %></strong>
-</div>
-  <div class="col-md-3">
-Security: <strong><%= @handbag.security_tag %></strong>
-</div>
-  <div class="col-md-3">
-Invoice: <strong><%= @handbag.invoice_number %></strong>
-</div>
-</div>
-<div class="row">
-  <div class="col-md-3">
-Clean: <strong><%= @handbag.is_clean? %></strong>
-</div>
-  <div class="col-md-3">
-Repair: <strong><%= @handbag.is_repair? %></strong>
-</div>
-  <div class="col-md-3">
-Colour: <strong><%= @handbag.is_colour? %></strong>
-</div>
-</div>
-<div class="row">
-  <div class="col-md-3">
-<%= @handbag.make %>
-</div>
-  <div class="col-md-3">
-<%= @handbag.make %>
-</div>
-  <div class="col-md-3">
-<%= @handbag.make %>
-</div>
-  <div class="col-md-3">
-<%= @handbag.make %>
-</div>
-</div>
+    <div class="col-md-4">
+              <strong><%= Spree.t(:entry_details) %>:</strong>
+                     <%= Spree.t(@handbag.entry_details) %>
+                     <br><br>
+              <strong><%= Spree.t(:dust_bag_description) %>:</strong>
+                     <%= Spree.t(@handbag.dust_bag_description) %>
+
+
+</div></div>
+
+
+     <% if @microposts.any? %>
+        <h3>Posts (<%= @handbag.microposts.count %>)</h3>
 <div class="row">
   <div class="col-md-8">
-     <% if @handbag.microposts.any? %>
-        <h3>Posts (<%= @handbag.microposts.count %>)</h3>
+
         <ol class="microposts">
-          <% @handbag.microposts.each do |micropost| %>
+          <% @microposts.each do |micropost| %>
              <li id="micropost-<%= micropost.id %>">
               <span class="user"><%= micropost.user.email %></span>
               <span class="content"><%= micropost.content %></span>
@@ -55,8 +35,6 @@ Colour: <strong><%= @handbag.is_colour? %></strong>
           <% end %>
         </ol>
       <%= paginate @microposts %>
-      /* Needs updating to work. */
-
     <% end %>
   </div>
     <div class="col-md-4">

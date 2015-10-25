@@ -3,23 +3,29 @@ module Spree
     class HandbagsController < ResourceController
 
       def index
-        @handbags = Spree::Handbag.page(params[:page] || 1).per(50)
+        @handbags = Spree::Handbag.page(params[:page]).per(50)
       end
+  def collection_actions
+    [:index, :clean, :repair, :colour]
+  end
+
       def new
          @handbag = Handbag.new
      end
       def clean
-        @handbags = Spree::Handbag.is_clean.page(params[:page] || 1).per(50)
+
+        @handbags = Spree::Handbag.is_clean.page(params[:page]).per(50)
+
      end
       def repair
-        @handbags = Spree::Handbag.is_repair.page(params[:page] || 1).per(50)
+        @handbags = Spree::Handbag.is_repair.page(params[:page]).per(50)
      end
       def colour
-        @handbags = Spree::Handbag.is_colour.page(params[:page] || 1).per(50)
+        @handbags = Spree::Handbag.is_colour.page(params[:page]).per(50)
      end
       def show
         @handbag = Spree::Handbag.find(params[:id])
-        @microposts = @handbag.microposts.page(params[:page]).per(2)
+        @microposts = @handbag.microposts.page(params[:page]).per(10)
       end
       def clean_completed
         @movedTo = 'REPAIR'
@@ -48,6 +54,11 @@ module Spree
       end
     end
     
+      end
+
+          private
+      def model_class
+        Handbag
       end
   end
 end

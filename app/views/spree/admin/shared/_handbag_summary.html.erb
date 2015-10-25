@@ -1,0 +1,69 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= Spree.t(:summary) %></h3>
+  </div>
+
+  <table class="table table-condensed table-bordered" id="handbag_tab_summary" data-hook>
+    <tbody class="additional-info">
+      <tr>
+        <td id="handbag_make" width="35%" data-hook>
+          <strong><%= Spree.t(:make) %>:</strong>
+        </td>
+        <td>
+            <%= Spree.t(@handbag.make) %>
+        </td>
+      </tr>
+      <tr>
+        <td data-hook>
+          <strong><%= Spree.t(:colour) %>:</strong>
+        </td>
+        <td id='handbag_colour'>
+            <%= Spree.t(@handbag.colour) %>
+        </td>
+      </tr>
+
+      <tr>
+        <td data-hook>
+          <strong><%= Spree.t(:security_tag) %>:</strong>
+        </td>
+        <td id='handbag_security_tag'>
+            <%= @handbag.security_tag %>
+        </td>
+      </tr>
+
+            <tr>
+        <td data-hook>
+          <strong><%= Spree.t(:invoice_number) %>:</strong>
+        </td>
+        <td id='handbag_invoice_number'>
+            <%= @handbag.invoice_number %>
+        </td>
+      </tr>
+            <tr>
+        <td data-hook>
+          <strong><%= Spree.t(:is_clean) %>:</strong>
+        </td>
+        <td id='handbag_is_clean'>
+            <%= Spree.t(@handbag.is_clean?) %>
+        </td>
+      </tr>
+            <tr>
+        <td data-hook>
+          <strong><%= Spree.t(:is_repair) %>:</strong>
+        </td>
+        <td id='handbag_is_repair'>
+            <%= Spree.t(@handbag.is_repair?) %>
+        </td>
+      </tr>
+            <tr>
+        <td data-hook>
+          <strong><%= Spree.t(:is_colour) %>:</strong>
+        </td>
+        <td id='handbag_is_colour'>
+            <%= Spree.t(@handbag.is_colour?) %>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

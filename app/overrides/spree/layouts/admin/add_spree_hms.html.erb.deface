@@ -1,5 +1,5 @@
 <!-- insert_bottom "[data-hook='admin_tabs']" -->
-<% if can? :admin, Spree::Handbag %>
+<% if can? :admin, Spree::Admin %>
 <ul class="nav nav-sidebar">
 
     <li class="sidebar-menu-item"><a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-hms-admin"><span class="icon icon-book"></span><span class="text">HMS - admin</span><span class="icon icon-chevron-left pull-right"></span></a>
@@ -18,6 +18,11 @@
 </li>
   </ul>
 
+  <% end %>
+
+<% if can? :admin, Spree::Handbag %>
+
+
   <ul class="nav nav-sidebar">
 
     <li class="sidebar-menu-item"><a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-hms-technical"><span class="icon icon-lock"></span><span class="text">HMS - technical</span><span class="icon icon-chevron-left pull-right"></span></a>
@@ -35,8 +40,8 @@
 </li>
   </ul>
 
-<% end %>
 
+ <% end %>
 <!-- old
   <ul class="nav nav-sidebar">
     <%= tab(:handbags, icon: "edit") %>
