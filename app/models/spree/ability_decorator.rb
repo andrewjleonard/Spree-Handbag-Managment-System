@@ -6,7 +6,7 @@ class AbilityDecorator
       can [:admin, :read, :clean, :repair, :colour, :limbo, :colour_completed, :clean_completed, :repair_completed, :move_limbo], Spree::Handbag
     end
     if user.respond_to?(:has_spree_role?) && user.has_spree_role?('hms-admin')
-      can :manage, [Spree::Handbag,Spree::Micropost,Spree::Admin,Spree::User,Spree::Order,Spree::Admin::SearchController] 
+      can :manage, [Spree::Handbag,Spree::Micropost,Spree::Admin,Spree::User] 
     end
   end
 end

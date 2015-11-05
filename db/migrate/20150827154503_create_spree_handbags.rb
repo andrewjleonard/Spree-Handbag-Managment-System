@@ -15,7 +15,6 @@ class CreateSpreeHandbags < ActiveRecord::Migration
       t.datetime :completion_date
       t.boolean :is_complete
       t.boolean :is_paid
-      t.boolean :is_limbo
       t.integer :collection_id
       t.integer :position
       t.references :user, index: true      
