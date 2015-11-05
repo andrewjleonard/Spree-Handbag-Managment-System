@@ -1,5 +1,5 @@
 <!-- insert_bottom "[data-hook='admin_tabs']" -->
-<% if can? :admin, Spree::Admin %>
+<% if can? :admin, Spree::User %>
 <ul class="nav nav-sidebar">
 
     <li class="sidebar-menu-item"><a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-hms-admin"><span class="icon icon-book"></span><span class="text">HMS - admin</span><span class="icon icon-chevron-left pull-right"></span></a>

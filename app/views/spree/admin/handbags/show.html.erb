@@ -1,12 +1,23 @@
 <% content_for :page_title do %>
   <%= Spree.t(:handbag) %> ID: <%= @handbag.id %>
 <% end %>
+<% content_for :page_actions do %>
+<% if @handbag.stage != 6 %>
+ <%= button_link_to Spree.t(:limbo_bag), move_limbo_admin_handbag_path(@handbag), class: 'btn-warning', icon: 'edit', id: 'admin_limbo_handbag_link', :method => :put, data: { confirm: "Have you added a reason?" } %>
+ <% end %>
+ <% end if can?(:read, Spree::Handbag) %>
 
+ 
+
+<div class="row">
+  <div class="col-md-8">
 
 <%= render partial: 'spree/admin/shared/handbag_summary' %>
-
-
-
+</div>
+<div class="col-md-4">
+   <%= image_tag @handbag.picture.url, :style => "max-width:100%" %>
+</div>
+</div>
 
      <% if @microposts.any? %>
         <h3>Posts (<%= @handbag.microposts.count %>)</h3>
@@ -32,10 +43,10 @@
 <%= form_for(:micropost, :url => admin_microposts_url, html: { multipart: true }) do |f| %>
   <%= render 'spree/shared/error_messages', target: @micropost %>
   <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new post...", style: 'width:100%' %>
+    <%= f.text_area :content, placeholder: "Compose new comment...", style: 'width:100%' %>
   </div>
    <%= f.hidden_field :handbag_id, :value => @handbag.id %>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
   <span class="picture">
 <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
   </span>

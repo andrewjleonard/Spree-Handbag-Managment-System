@@ -5,23 +5,33 @@
       <%= f.collection_select :user_id, Spree::User.all, :id, :email, :prompt=>true, class: 'form-control' %>
       <%= error_message_on :handbag, :user_id %>
     <% end %>
-    <%= f.field_container :is_clean do %>
-    <%= f.label :is_clean %>
+    <br>
+    <%= f.field_container :work_type do %>
+    <%= f.label :work_type %>
+    <%= f.label :is_clean, class: ['checkbox-inline']%>
     <%= f.error_message_on :is_clean %>
-    <%= f.check_box :is_clean, class: ['checkbox-inline'] %>
-    <% end %>
-        <%= f.field_container :is_repair do %>
-    <%= f.label :is_repair %>
+    <%= f.check_box :is_clean %>
+    
+    <%= f.label :is_repair, class: ['checkbox-inline']%>
     <%= f.error_message_on :is_repair %>
-    <%= f.check_box :is_repair, class: ['checkbox-inline'] %>
-    <% end %>
-        <%= f.field_container :is_colour do %>
-    <%= f.label :is_colour %>
+    <%= f.check_box :is_repair%>
+    
+    <%= f.label :is_colour, class: ['checkbox-inline']%>
     <%= f.error_message_on :is_colour %>
-    <%= f.check_box :is_colour, class: ['checkbox-inline'] %>
+    <%= f.check_box :is_colour %>
+    <% end %>
+    
+    <br>
+    <% if @readonly != false %>
+    <%= f.field_container :stage, class: ['form-group'] do %>
+      <%= f.label :stage %>
+      <%= error_message_on :handbag, :stage %>
+      <%= select(:handbag, :stage, [['Clean', 1], ['Repair', 2], ['Colour', 3], ['Quality Control', 4], ['Complete', 5], ['Limbo', 6]]) %>
+    <% end %>
+    
     <% end %>
 
-    <br>
+    
 
         <%= f.field_container :work_details, class: ['form-group'] do %>
       <%= f.label :work_details %>
@@ -62,6 +72,11 @@
       <%= f.label :completion_date %>
       <%= f.text_field :completion_date, :class => 'datepicker form-control' %>      
       <%= error_message_on :handbag, :completion_date %>
+    <% end %>
+      <%= f.field_container :picture, class: ['form-group'] do %>
+      <%= f.label :picture %>
+      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', :class => 'form-control' %>
+      <%= error_message_on :handbag, :picture %>
     <% end %>
 
     </div>
