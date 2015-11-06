@@ -4,6 +4,11 @@ module Spree
 
       def index
         @handbags = Spree::Handbag.page(params[:page]).per(50)
+        if params[:search]
+          @posts = Post.search(params[:search]).order("created_at DESC")
+        else
+          @posts = Post.all.order('created_at DESC')
+        end
       end
       def collection_actions
         [:index, :clean, :repair, :colour, :limbo]
@@ -122,13 +127,13 @@ module Spree
 
       def move_limbo
         @handbag.stage = 6
-      if @handbag.save
-      flash[:success] = "Moved to Limbo"
-      redirect_to :back
-      else
-      render :back
-    end
-  end
+        if @handbag.save
+          flash[:success] = "Moved to Limbo"
+          redirect_to :back
+        else
+          render :back
+        end
+      end
 
       private
 
