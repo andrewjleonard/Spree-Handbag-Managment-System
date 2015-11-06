@@ -4,7 +4,7 @@ class CreateSpreeHandbags < ActiveRecord::Migration
       t.string :make
       t.string :colour
       t.string :security_tag
-      t.string :invoice_number
+      t.text :defects
       t.string :dust_bag
       t.text :work_details
       t.boolean :is_clean

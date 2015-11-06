@@ -31,12 +31,15 @@
     
     <% end %>
 
-    
-
         <%= f.field_container :work_details, class: ['form-group'] do %>
       <%= f.label :work_details %>
       <%= f.text_area :work_details, class: ['form-control'] %>      
       <%= error_message_on :handbag, :work_details %>
+    <% end %>
+        <%= f.field_container :defects, class: ['form-group'] do %>
+      <%= f.label :defects %>
+      <%= f.text_area :defects, class: ['form-control'] %>      
+      <%= error_message_on :handbag, :defects %>
     <% end %>
     <%= f.field_container :make, class: ['form-group'] do %>
       <%= f.label :make %>
@@ -52,11 +55,6 @@
       <%= f.label :security_tag %>
       <%= f.text_field :security_tag, class: 'form-control' %>
       <%= error_message_on :handbag, :security_tag %>
-    <% end %>
-      <%= f.field_container :invoice_number, class: ['form-group'] do %>
-      <%= f.label :invoice_number %>
-      <%= f.text_field :invoice_number, class: 'form-control' %>
-      <%= error_message_on :handbag, :invoice_number %>
     <% end %>
       <%= f.field_container :dust_bag, class: ['form-group'] do %>
       <%= f.label :dust_bag %>
