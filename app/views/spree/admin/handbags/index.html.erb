@@ -5,7 +5,7 @@
 <% content_for :page_actions do %>
 <% end %>
 
-<%= form_tag(posts_path, :method => "get", id: "search-form") do %>
+<%= form_tag(admin_handbags_path, :method => "get", id: "search-form") do %>
 <%= text_field_tag :search, params[:search], placeholder: "Search Handbags" %>
 <%= submit_tag "Search" %>
 <% end %>

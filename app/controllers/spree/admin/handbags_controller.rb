@@ -5,9 +5,9 @@ module Spree
       def index
         @handbags = Spree::Handbag.page(params[:page]).per(50)
         if params[:search]
-          @posts = Post.search(params[:search]).order("created_at DESC")
+          @handbags = Spree::Handbag.search(params[:search]).page(params[:page]).per(50)
         else
-          @posts = Post.all.order('created_at DESC')
+          @handbags = Spree::Handbag.all.page(params[:page]).per(50)
         end
       end
       def collection_actions

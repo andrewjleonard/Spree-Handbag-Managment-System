@@ -3,7 +3,7 @@ module Spree
     belongs_to :user
     before_create :init
     has_many :microposts , class_name: Spree::Micropost, dependent: :destroy
-    validates :make,:colour,:arrival_date,:completion_date,:user_id, presence: true
+    validates :make,:colour,:arrival_date,:completion_date,:user_id,:work_details,:security_tag, presence: true
     mount_uploader :picture, PictureUploader
     validate  :picture_size
 
@@ -28,7 +28,7 @@ module Spree
     end
 
     def self.search(search)
-      where(:security_tag = search)
+      where("security_tag LIKE ?", "%#{search}%")
     end
 
     scope :is_clean, -> { where('is_clean IS true AND stage = 1') }
