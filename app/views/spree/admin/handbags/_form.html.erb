@@ -73,7 +73,7 @@
     <% end %>
       <%= f.field_container :picture, class: ['form-group'] do %>
       <%= f.label :pictures %>
-      <%= f.file_field :picture, multiple: true,accept: 'image/jpeg,image/gif,image/png', :class => 'form-control' %>
+      <%= f.file_field :picture ,accept: 'image/jpeg,image/gif,image/png', :class => 'form-control' %>
       <%= error_message_on :handbag, :picture %>
     <% end %>
 
