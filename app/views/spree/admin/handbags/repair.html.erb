@@ -13,7 +13,7 @@
       <th><%= t(:make, scope: 'activerecord.attributes.spree/handbag') %></th>
       <th><%= t(:colour, scope: 'activerecord.attributes.spree/handbag') %></th>
       <th><%= t(:security_tag, scope: 'activerecord.attributes.spree/handbag') %></th>
-      <th><%= t(:completion_date, scope: 'activerecord.attributes.spree/handbag') %></th>
+      <th><%= t(:repair_by_date, scope: 'activerecord.attributes.spree/handbag') %></th>
       <th data-hook="admin_handbags_index_header_actions" class="actions"></th>
     </tr>
   </thead>
@@ -24,7 +24,7 @@
         <td><%= link_to handbag.make, object_url(handbag) %></td>
         <td><%= link_to handbag.colour, object_url(handbag) %></td>
         <td><%= link_to handbag.security_tag, object_url(handbag) %></td>
-        <td><%= link_to handbag.completion_date.strftime("%d/%m/%Y"), object_url(handbag) %></td>
+        <td><%= link_to handbag.repair_by_date.strftime("%d/%m/%Y"), object_url(handbag) %></td>
 
         <td data-hook="admin_handbags_index_row_actions" class="actions text-right">
           <%= link_to_with_icon('check', 'Complete', repair_completed_admin_handbag_path(handbag), :remote=> true, :method => :put,data: { confirm: "Are you sure?" }, class: 'btn btn-success btn-sm complete-resource') %>
