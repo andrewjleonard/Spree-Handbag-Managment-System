@@ -8,8 +8,11 @@ class CreateSpreeHandbags < ActiveRecord::Migration
       t.string :dust_bag
       t.text :work_details
       t.boolean :is_clean
+      t.datetime :clean_by_date
       t.boolean :is_repair
+      t.datetime :repair_by_date
       t.boolean :is_colour
+      t.datetime :colour_by_date
       t.integer :stage
       t.datetime :arrival_date
       t.datetime :completion_date

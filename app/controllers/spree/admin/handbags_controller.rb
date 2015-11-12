@@ -137,6 +137,10 @@ module Spree
 
       private
 
+      def handbag_params
+        params.require(:handbag).permit({pictures: []})
+      end
+
       def micropost_params
         params.require(:handbag).permit(:picture)
       end

@@ -8,6 +8,5 @@ module Spree
       :html_body => '<strong>Hello</strong> dear Postmark user.',
       :track_opens => 'true')
     end
-
   end
 end
