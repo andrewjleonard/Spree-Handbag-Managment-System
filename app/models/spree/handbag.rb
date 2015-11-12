@@ -4,7 +4,6 @@ module Spree
     before_create :init
     has_many :microposts , class_name: Spree::Micropost, dependent: :destroy
     validates :make,:colour,:arrival_date,:completion_date,:user_id,:work_details,:security_tag, presence: true
-    mount_uploader :picture, PictureUploader
     mount_uploaders :pictures, PictureUploader
     validate  :picture_size
 
@@ -34,8 +33,8 @@ module Spree
 
     # Validates the size of an uploaded picture.
     def picture_size
-      if picture.size > 5.megabytes
-        errors.add(:picture, "should be less than 5MB")
+      if pictures.size > 5.megabytes
+        errors.add(:pictures, "should be less than 5MB")
       end
     end
 

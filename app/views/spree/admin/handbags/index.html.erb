@@ -6,7 +6,7 @@
 <% end %>
 
 <%= form_tag(admin_handbags_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Handbags" %>
+<%= text_field_tag :search, params[:search], placeholder: "Search by ST" %>
 <%= submit_tag "Search" %>
 <% end %>
 
