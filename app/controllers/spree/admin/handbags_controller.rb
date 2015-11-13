@@ -9,7 +9,9 @@ module Spree
         else
           @handbags = Spree::Handbag.all.page(params[:page]).per(50)
         end
+        @readonly = false
       end
+
       def collection_actions
         [:index, :clean, :repair, :colour, :limbo]
       end
@@ -17,8 +19,8 @@ module Spree
       def new
         @handbag = Handbag.new
         @readonly = false
-
       end
+
       def clean
         @handbags = Spree::Handbag.is_clean.page(params[:page]).per(50)
       end
@@ -55,7 +57,7 @@ module Spree
           @movedTo = 'Quality Control'
         end
         if @handbag.save
-          Spree::TestMailer.confirm_email(@handbag.email).deliver_now
+          Spree::TestMailer.confirm_email(@handbag.user.email).deliver_now
           invoke_callbacks(:update, :after)
           flash[:success] = flash_message_for(@handbag, "Handbag completed, moved to #{@movedTo}")
           respond_with(@handbag) do |format|

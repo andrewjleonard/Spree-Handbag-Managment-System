@@ -71,11 +71,48 @@
       <%= f.text_field :completion_date, :class => 'datepicker form-control' %>      
       <%= error_message_on :handbag, :completion_date %>
     <% end %>
-
-
+      <%= f.field_container :pictures0, class: ['form-group'] do %>
+      <%= f.label "picture" %>
+      <%= f.file_field :pictures, multiple: true, accept: 'image/jpeg,image/gif,image/png', :class => 'form-control error' %>
+      <%= error_message_on :handbag, :pictures %>
+    <% end %>
+      <%= f.field_container :pictures1, class: ['form-group'] do %>
+      <%= f.label "picture" %>
+      <%= f.file_field :pictures, multiple: true, accept: 'image/jpeg,image/gif,image/png', :class => 'form-control error' %>
+      <%= error_message_on :handbag, :pictures %>
+    <% end %>
+      <%= f.field_container :pictures2, class: ['form-group'] do %>
+      <%= f.label "picture" %>
+      <%= f.file_field :pictures, multiple: true, accept: 'image/jpeg,image/gif,image/png', :class => 'form-control error' %>
+      <%= error_message_on :handbag, :pictures %>
+    <% end %>
+      <%= f.field_container :pictures3, class: ['form-group'] do %>
+      <%= f.label "picture" %>
+      <%= f.file_field :pictures, multiple: true, accept: 'image/jpeg,image/gif,image/png', :class => 'form-control error' %>
+      <%= error_message_on :handbag, :pictures %>
+    <% end %>
+      <%= f.field_container :pictures4, class: ['form-group'] do %>
+      <%= f.label "picture" %>
+      <%= f.file_field :pictures, multiple: true, accept: 'image/jpeg,image/gif,image/png', :class => 'form-control error' %>
+      <%= error_message_on :handbag, :pictures %>
+    <% end %>
+      <%= f.field_container :pictures5, class: ['form-group'] do %>
+      <%= f.label :pictures %>
+      <%= f.file_field :pictures, multiple: true, accept: 'image/jpeg,image/gif,image/png', :class => 'form-control error' %>
+      <%= error_message_on :handbag, :pictures %>
+    <% end %>
+    <a onclick="showField()" id="show_er" href="javascript:void(0);">Add Picture +</a>
     </div>
 </div>
 
 <script>
-document.getElementById("handbag_pictures5_field").style.display = '';
+var count = 0
+function showField(){
+count++;
+document.getElementById("handbag_pictures"+count+"_field").style.display = 'block';
+if (count==5){
+document.getElementById("show_er").style.display = 'none';
+}
+}
 </script>
+

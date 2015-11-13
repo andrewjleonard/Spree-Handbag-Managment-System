@@ -15,9 +15,11 @@
 <%= render partial: 'spree/admin/shared/handbag_summary' %>
 </div>
 <div class="col-md-4">
-        
-
+<% @handbag.pictures.each do |picture| %>
+              <a href="<%=picture.url%>">
+   <%= image_tag picture.url, :style => "max-width:50%" %>
    </a>
+   <% end %>
 </div>
 </div>
 

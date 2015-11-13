@@ -9,6 +9,7 @@
   <!-- <li><a href="/admin/handbags">Quote Requests</a></li> -->
   <!-- <li><a href="/admin/handbags">Quotes Approved</a></li> -->
    <li><a href="/admin/handbags/new">Add Bag</a></li>
+   <li><a href="/admin/handbags">All Handbags</a></li>
    <li><a href="/admin/handbags/limbo">Limbo Bags</a></li>
    <li><a href="/admin/handbags/quality">Quality Control</a></li>
    <li><a href="/admin/handbags/complete">Completed Bags</a></li>

@@ -1,5 +1,5 @@
 Deface::Override.new(:virtual_path => "spree/admin/users/_form",
-                     :name => "example-1",
+                     :name => "hide_roles_based_on_role_in_user_area",
                      :replace => "div.form-group") do
 
 
