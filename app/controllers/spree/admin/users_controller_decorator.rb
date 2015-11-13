@@ -12,7 +12,7 @@ Spree::Admin::UsersController.class_eval do
           @user.password_confirmation = generated_password
           end
       end
-      		byebug
+      
           if @user.save
             set_roles
 
