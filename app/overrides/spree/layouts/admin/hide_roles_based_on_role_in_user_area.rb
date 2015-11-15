@@ -4,16 +4,6 @@ Deface::Override.new(:virtual_path => "spree/admin/users/_form",
 
 
       '
-    <%= f.field_container :name, class: ["form-group"] do %>
-      <%= f.label :name, Spree.t(:name) %>
-      <%= f.text_field :name, :class => "form-control" %>
-      <%= error_message_on :user, :name %>
-    <% end %>
-    <%= f.field_container :phone, class: ["form-group"] do %>
-      <%= f.label :phone, Spree.t(:phone) %>
-      <%= f.text_field :phone, :class => "form-control" %>
-      <%= error_message_on :user, :phone %>
-    <% end %>
      <% if spree_current_user.has_spree_role?("hms-admin") %>
       <div data-hook="admin_user_form_roles" class="form-group">
       <% @roles.where(name: "user").each do |role| %>
