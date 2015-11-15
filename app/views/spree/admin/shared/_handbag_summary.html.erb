@@ -112,6 +112,22 @@
           <%= Spree.t(@handbag.completion_date.strftime("%d/%m/%Y")) %>
         </td>
       </tr>
+      <tr>
+        <td data-hook>
+          <strong><%= Spree.t(:price) %>:</strong>
+        </td>
+        <td id='handbag_price'>
+          <%= Spree.t(@handbag.price) %>
+        </td>
+      </tr>      
+      <tr>
+        <td data-hook>
+          <strong><%= Spree.t(:postage) %>:</strong>
+        </td>
+        <td id='handbag_postage'>
+          <%= Spree.t(@handbag.postage) %>
+        </td>
+      </tr>
       
     </tbody>
   </table>

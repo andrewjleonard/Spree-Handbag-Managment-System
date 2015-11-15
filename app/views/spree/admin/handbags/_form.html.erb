@@ -71,6 +71,16 @@
       <%= f.text_field :completion_date, :class => 'datepicker form-control' %>      
       <%= error_message_on :handbag, :completion_date %>
     <% end %>
+      <%= f.field_container :price, class: ['form-group'] do %>
+      <%= f.label :price %>
+      <%= f.number_field :price, :class => 'form-control' %>      
+      <%= error_message_on :handbag, :price %>
+    <% end %>
+      <%= f.field_container :postage, class: ['form-group'] do %>
+      <%= f.label :postage %>
+      <%= f.number_field :postage, :class => 'form-control' %>      
+      <%= error_message_on :handbag, :postage %>
+    <% end %>
       <%= f.field_container :pictures0, class: ['form-group'] do %>
       <%= f.label "picture" %>
       <%= f.file_field :pictures, multiple: true, accept: 'image/jpeg,image/gif,image/png', :class => 'form-control error' %>
