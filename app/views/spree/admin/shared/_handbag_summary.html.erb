@@ -117,7 +117,7 @@
           <strong><%= Spree.t(:price) %>:</strong>
         </td>
         <td id='handbag_price'>
-          <%= number_to_currency(:price, :unit => "£") %>
+          <%= number_to_currency(@handbag.price, :unit => "£") %>
         </td>
       </tr>      
       <tr>
@@ -125,7 +125,7 @@
           <strong><%= Spree.t(:postage) %>:</strong>
         </td>
         <td id='handbag_postage'>
-          <%= number_to_currency(:postage, :unit => "£") %>
+          <%= number_to_currency(@handbag.postage, :unit => "£") %>
         </td>
       </tr>
       
