@@ -5,6 +5,14 @@
   <table class="table table-condensed table-bordered" id="handbag_tab_summary" data-hook>
     <tbody class="additional-info">
       <tr>
+        <td id="handbag_customer_name" width="35%" data-hook>
+          <strong><%= Spree.t(:customer_name) %>:</strong>
+        </td>
+        <td>
+          <%=link_to "#{@handbag.user.bill_address.first_name} #{@handbag.user.bill_address.last_name}", admin_user_path(@handbag.user) %>
+        </td>
+      </tr>
+      <tr>
         <td id="handbag_make" width="35%" data-hook>
           <strong><%= Spree.t(:make) %>:</strong>
         </td>
