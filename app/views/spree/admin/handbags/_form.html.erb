@@ -28,7 +28,22 @@
       <%= error_message_on :handbag, :stage %>
       <%= select(:handbag, :stage, [['Clean', 1], ['Repair', 2], ['Colour', 3], ['Quality Control', 4], ['Complete', 5], ['Limbo', 6]]) %>
     <% end %>
-    
+          <%= f.field_container :clean_by_date, class: ['form-group'] do %>
+      <%= f.label :clean_by_date %>
+      <%= f.text_field :clean_by_date, :class => 'datepicker form-control' %>      
+      <%= error_message_on :handbag, :clean_by_date %>
+    <% end %>
+          <%= f.field_container :repair_by_date, class: ['form-group'] do %>
+      <%= f.label :repair_by_date %>
+      <%= f.text_field :repair_by_date, :class => 'datepicker form-control' %>      
+      <%= error_message_on :handbag, :repair_by_date %>
+    <% end %>
+          <%= f.field_container :repair_by_date, class: ['form-group'] do %>
+      <%= f.label :repair_by_date %>
+      <%= f.text_field :repair_by_date, :class => 'datepicker form-control' %>      
+      <%= error_message_on :handbag, :repair_by_date %>
+    <% end %>
+
     <% end %>
 
         <%= f.field_container :work_details, class: ['form-group'] do %>

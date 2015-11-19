@@ -1,16 +1,16 @@
 <% content_for :page_title do %>
-  <%= Spree.t(:completed_bags) %>
+  <%= Spree.t(:quality_control) %>
 <% end %>
 
 <% content_for :page_actions do %>
 <% end %>
 
-<%= form_tag(complete_admin_handbags_path, :method => "get", id: "search-form", class: 'form-inline') do %>
+<%= form_tag(quality_admin_handbags_path, :method => "get", id: "search-form", class: 'form-inline') do %>
 <%= text_field_tag :search, params[:search], placeholder: "Search by ST", :class => 'form-control' %>
 <%= submit_tag "Search", class: 'btn btn-primary' %>
 <% end %>
 
-<table class="table sortable" id="completed_handbags" data-hook data-sortable-link="<%= update_positions_admin_handbags_url %>">
+<table class="table sortable" id="quality_handbags" data-hook data-sortable-link="<%= update_positions_admin_handbags_url %>">
   <thead>
     <tr data-hook="admin_handbags_index_headers">
       <th class="no-border"><%= t(:id, scope: 'activerecord.attributes.spree/handbag') %></th>
@@ -31,7 +31,7 @@
         <td><%= link_to handbag.completion_date.strftime("%d/%m/%Y"), object_url(handbag) %></td>
 
         <td data-hook="admin_handbags_index_row_actions" class="actions text-right">
-          <%= link_to_with_icon('check', 'Archive', admin_handbag_path(handbag, :handbag => {:stage => 7}), :remote=> true, :method => :put,data: { confirm: "Are you sure?" }, class: 'btn btn-success btn-sm complete-resource') %>
+          <%= link_to_with_icon('check', 'Complete', admin_handbag_path(handbag, :handbag => {:stage => 5}), :remote=> true, :method => :put,data: { confirm: "Are you sure?" }, class: 'btn btn-success btn-sm complete-resource') %>
         </td>
       </tr>
     <% end %>

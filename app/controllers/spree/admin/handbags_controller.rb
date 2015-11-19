@@ -9,11 +9,10 @@ module Spree
         else
           @handbags = Spree::Handbag.all.page(params[:page]).per(50)
         end
-        @readonly = false
       end
 
       def collection_actions
-        [:index, :clean, :repair, :colour, :limbo]
+        [:index, :clean, :repair, :colour, :quality, :complete, :limbo, :archive]
       end
 
       def new
@@ -23,21 +22,61 @@ module Spree
 
       def clean
         @handbags = Spree::Handbag.is_clean.page(params[:page]).per(50)
+        if params[:search]
+          @handbags = Spree::Handbag.is_clean.search(params[:search]).page(params[:page]).per(50)
+        else
+        @handbags = Spree::Handbag.is_clean.page(params[:page]).per(50)
+        end
       end
       def repair
         @handbags = Spree::Handbag.is_repair.page(params[:page]).per(50)
+        if params[:search]
+          @handbags = Spree::Handbag.is_repair.search(params[:search]).page(params[:page]).per(50)
+        else
+          @handbags = Spree::Handbag.is_repair.page(params[:page]).per(50)
+        end
       end
       def colour
         @handbags = Spree::Handbag.is_colour.page(params[:page]).per(50)
+        if params[:search]
+          @handbags = Spree::Handbag.is_colour.search(params[:search]).page(params[:page]).per(50)
+        else
+          @handbags = Spree::Handbag.is_colour.page(params[:page]).per(50)
+        end
+      end
+
+      def quality
+        @handbags = Spree::Handbag.is_quality.page(params[:page]).per(50)
+        if params[:search]
+          @handbags = Spree::Handbag.is_quality.search(params[:search]).page(params[:page]).per(50)
+        else
+          @handbags = Spree::Handbag.is_quality.page(params[:page]).per(50)
+        end
+      end
+
+      def complete
+        @handbags = Spree::Handbag.is_complete.page(params[:page]).per(50)
+        if params[:search]
+          @handbags = Spree::Handbag.is_complete.search(params[:search]).page(params[:page]).per(50)
+        else
+          @handbags = Spree::Handbag.is_complete.page(params[:page]).per(50)
+        end
       end
       def limbo
         @handbags = Spree::Handbag.is_limbo.page(params[:page]).per(50)
+        if params[:search]
+          @handbags = Spree::Handbag.is_limbo.search(params[:search]).page(params[:page]).per(50)
+        else
+          @handbags = Spree::Handbag.is_limbo.page(params[:page]).per(50)
+        end
       end
-      def quality
-        @handbags = Spree::Handbag.is_limbo.page(params[:page]).per(50)
-      end
-      def complete
-        @handbags = Spree::Handbag.is_limbo.page(params[:page]).per(50)
+      def archive
+        @handbags = Spree::Handbag.is_archive.page(params[:page]).per(50)
+        if params[:search]
+          @handbags = Spree::Handbag.is_archive.search(params[:search]).page(params[:page]).per(50)
+        else
+          @handbags = Spree::Handbag.is_archive.page(params[:page]).per(50)
+        end
       end
       def show
         @handbag = Spree::Handbag.find(params[:id])
@@ -134,6 +173,29 @@ module Spree
           redirect_to :back
         else
           render :back
+        end
+      end
+
+      def create
+        invoke_callbacks(:create, :before)
+        @handbag.attributes = permitted_resource_params
+        if @handbag.save
+          invoke_callbacks(:create, :after)
+          flash[:success] = flash_message_for(@handbag, :successfully_created)
+          respond_with(@handbag) do |format|
+            format.html { redirect_to location_after_save }
+            format.js   { render :layout => false }
+          end
+        else
+          @readonly = false
+          invoke_callbacks(:create, :fails)
+          respond_with(@handbag) do |format|
+            format.html do
+              flash.now[:error] = @handbag.errors.full_messages.join(", ")
+              render action: 'new'
+            end
+            format.js { render layout: false }
+          end
         end
       end
 

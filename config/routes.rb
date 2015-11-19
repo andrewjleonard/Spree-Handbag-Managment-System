@@ -11,7 +11,7 @@ Spree::Core::Engine.add_routes do
       end
       collection do
         post :update_positions
-        get :clean, :repair, :colour, :limbo, :complete, :quality
+        get :clean, :repair, :colour, :limbo, :complete, :quality, :archive
       end
 
     end

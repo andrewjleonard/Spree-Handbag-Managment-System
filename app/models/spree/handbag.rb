@@ -1,14 +1,15 @@
 module Spree
   class Handbag < ActiveRecord::Base
     belongs_to :user
-    before_create :init
     has_many :microposts , class_name: Spree::Micropost, dependent: :destroy
-    validates :make,:colour,:arrival_date,:completion_date,:user_id,:work_details,:security_tag, presence: true
+    validates :make,:colour,:arrival_date,:completion_date,:user_id,:work_details,:security_tag,:postage,:price, presence: true
     mount_uploaders :pictures, PictureUploader
     validate  :picture_size
+    validate  :at_least_one_is_checked
+    before_create :init
 
     acts_as_list
-    default_scope { order(:completion_date).reverse_order }
+    default_scope { order(:completion_date) }
 
     def init
       count = {'is_clean' => is_clean, 'is_repair' => is_repair, 'is_colour' => is_colour}.values.count(true)
@@ -17,7 +18,13 @@ module Spree
         self.clean_by_date = arrival_date + days_per_stage
       end
       if is_repair == true
-        self.repair_by_date = arrival_date + (days_per_stage * 2)
+        if count == 1
+          self.repair_by_date = completion_date
+        elsif count == 2
+          self.repair_by_date = arrival_date + days_per_stage
+        else
+          self.repair_by_date = arrival_date + (days_per_stage * 2)
+        end
       end
       if is_colour == true
         self.colour_by_date = completion_date
@@ -42,12 +49,17 @@ module Spree
       where("security_tag LIKE ?", "%#{search}%")
     end
 
-    scope :is_clean, -> { where('is_clean IS true AND stage = 1').order(:clean_by_date).reverse_order }
-    scope :is_repair, -> { where('is_repair IS true AND stage = 2').order(:repair_by_date).reverse_order }
-    scope :is_colour, -> { where('is_colour IS true AND stage = 3').order(:colour_by_date).reverse_order }
+    def at_least_one_is_checked
+      errors.add(:base, "Select at least one work type") unless is_clean || is_repair || is_colour
+    end
+
+    scope :is_clean, -> { where('is_clean IS true AND stage = 1').order(:clean_by_date) }
+    scope :is_repair, -> { where('is_repair IS true AND stage = 2').order(:repair_by_date) }
+    scope :is_colour, -> { where('is_colour IS true AND stage = 3').order(:colour_by_date) }
     scope :is_quality, -> { where(stage: 4) }
     scope :is_complete, -> { where(stage: 5) }
     scope :is_limbo, -> { where(stage: 6) }
+    scope :is_archive, -> { where(stage: 7) }
 
   end
 end
