@@ -20,7 +20,8 @@
     <%= f.error_message_on :is_colour %>
     <%= f.check_box :is_colour %>
     <% end %>
-    
+
+
     <br>
     <% if @readonly != false %>
     <%= f.field_container :stage, class: ['form-group'] do %>
@@ -85,6 +86,11 @@
       <%= f.label :completion_date %>
       <%= f.text_field :completion_date, :class => 'datepicker form-control' %>      
       <%= error_message_on :handbag, :completion_date %>
+    <% end %>
+      <%= f.field_container :agent, class: ['form-group'] do %>
+      <%= f.label :agent %>
+      <%= f.text_field :agent, class: 'form-control' %>
+      <%= error_message_on :handbag, :agent %>
     <% end %>
       <%= f.field_container :price, class: ['form-group'] do %>
       <%= f.label :price %>

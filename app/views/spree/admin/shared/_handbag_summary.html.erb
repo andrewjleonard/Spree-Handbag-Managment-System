@@ -13,6 +13,14 @@
         </td>
       </tr>
       <tr>
+        <td data-hook>
+          <strong><%= Spree.t(:agent) %>:</strong>
+        </td>
+        <td id='handbag_agent'>
+          <%= @handbag.agent %>
+        </td>
+      </tr>
+      <tr>
         <td id="handbag_make" width="35%" data-hook>
           <strong><%= Spree.t(:make) %>:</strong>
         </td>
@@ -29,114 +37,114 @@
         </td>
       </tr>
       <tr>
-        <td data-hook>
-          <strong><%= Spree.t(:security_tag) %>:</strong>
-        </td>
-        <td id='handbag_security_tag'>
-          <%= @handbag.security_tag %>
-        </td>
-      </tr>
-      <tr>
-        <td data-hook>
-          <strong><%= Spree.t(:is_clean) %>:</strong>
-        </td>
-        <td id='handbag_is_clean'>
-          <%= Spree.t(@handbag.is_clean?) %>
-        </td>
-      </tr>
-      <tr>
-        <td data-hook>
-          <strong><%= Spree.t(:is_repair) %>:</strong>
-        </td>
-        <td id='handbag_is_repair'>
-          <%= Spree.t(@handbag.is_repair?) %>
-        </td>
-      </tr>
-      <tr>
-        <td data-hook>
-          <strong><%= Spree.t(:is_colour) %>:</strong>
-        </td>
-        <td id='handbag_is_colour'>
-          <%= Spree.t(@handbag.is_colour?) %>
-        </td>
-      </tr>
-      <tr>
-        <td data-hook>
-          <strong><%= Spree.t(:stage) %>:</strong>
-        </td>
-        <td id='handbag_stage'>
-          <%= if @handbag.stage == 1
-          'Clean'
-          elsif @handbag.stage == 2
-          'Repair'
-          elsif @handbag.stage == 3
-          'Colour'
-          elsif @handbag.stage == 4
-          'Quality Control'
-          elsif @handbag.stage == 5
-          'Complete'
-          elsif @handbag.stage == 6
-          'Limbo'
-          end %>
-        </td>
-      </tr>
-      <tr>
-        <td data-hook>
-          <strong><%= Spree.t(:work_details) %>:</strong>
-        </td>
-        <td id='handbag_work_details'>
-          <%= @handbag.work_details %>
-        </td>
-      </tr>
-      <tr>
-        <td data-hook>
-          <strong><%= Spree.t(:defects) %>:</strong>
-        </td>
-        <td id='handbag_defects'>
-          <%= @handbag.defects %>
-        </td>
-      </tr>
-      <tr>
-        <td data-hook>
-          <strong><%= Spree.t(:dust_bag) %>:</strong>
-        </td>
-        <td id='handbag_dust_bag'>
-          <%= @handbag.dust_bag %>
-        </td>
-      </tr>
-      <tr>
-        <td data-hook>
-          <strong><%= Spree.t(:arrival_date) %>:</strong>
-        </td>
-        <td id='handbag_arrival_date'>
-          <%= Spree.t(@handbag.arrival_date.strftime("%d/%m/%Y")) %>
-        </td>
-      </tr>
-      <tr>
-        <td data-hook>
-          <strong><%= Spree.t(:completion_date) %>:</strong>
-        </td>
-        <td id='handbag_completion_date'>
-          <%= Spree.t(@handbag.completion_date.strftime("%d/%m/%Y")) %>
-        </td>
-      </tr>
-      <tr>
-        <td data-hook>
-          <strong><%= Spree.t(:price) %>:</strong>
-        </td>
-        <td id='handbag_price'>
-          <%= number_to_currency(@handbag.price, :unit => "£") %>
-        </td>
-      </tr>      
-      <tr>
-        <td data-hook>
-          <strong><%= Spree.t(:postage) %>:</strong>
-        </td>
-        <td id='handbag_postage'>
-          <%= number_to_currency(@handbag.postage, :unit => "£") %>
-        </td>
-      </tr>
-      
-    </tbody>
-  </table>
-</div>
+        <tr>
+          <td data-hook>
+            <strong><%= Spree.t(:security_tag) %>:</strong>
+          </td>
+          <td id='handbag_security_tag'>
+            <%= @handbag.security_tag %>
+          </td>
+        </tr>
+        <tr>
+          <td data-hook>
+            <strong><%= Spree.t(:is_clean) %>:</strong>
+          </td>
+          <td id='handbag_is_clean'>
+            <%= Spree.t(@handbag.is_clean?) %>
+          </td>
+        </tr>
+        <tr>
+          <td data-hook>
+            <strong><%= Spree.t(:is_repair) %>:</strong>
+          </td>
+          <td id='handbag_is_repair'>
+            <%= Spree.t(@handbag.is_repair?) %>
+          </td>
+        </tr>
+        <tr>
+          <td data-hook>
+            <strong><%= Spree.t(:is_colour) %>:</strong>
+          </td>
+          <td id='handbag_is_colour'>
+            <%= Spree.t(@handbag.is_colour?) %>
+          </td>
+        </tr>
+        <tr>
+          <td data-hook>
+            <strong><%= Spree.t(:stage) %>:</strong>
+          </td>
+          <td id='handbag_stage'>
+            <%= if @handbag.stage == 1
+            'Clean'
+            elsif @handbag.stage == 2
+            'Repair'
+            elsif @handbag.stage == 3
+            'Colour'
+            elsif @handbag.stage == 4
+            'Quality Control'
+            elsif @handbag.stage == 5
+            'Complete'
+            elsif @handbag.stage == 6
+            'Limbo'
+            end %>
+          </td>
+        </tr>
+        <tr>
+          <td data-hook>
+            <strong><%= Spree.t(:work_details) %>:</strong>
+          </td>
+          <td id='handbag_work_details'>
+            <%= @handbag.work_details %>
+          </td>
+        </tr>
+        <tr>
+          <td data-hook>
+            <strong><%= Spree.t(:defects) %>:</strong>
+          </td>
+          <td id='handbag_defects'>
+            <%= @handbag.defects %>
+          </td>
+        </tr>
+        <tr>
+          <td data-hook>
+            <strong><%= Spree.t(:dust_bag) %>:</strong>
+          </td>
+          <td id='handbag_dust_bag'>
+            <%= @handbag.dust_bag %>
+          </td>
+        </tr>
+        <tr>
+          <td data-hook>
+            <strong><%= Spree.t(:arrival_date) %>:</strong>
+          </td>
+          <td id='handbag_arrival_date'>
+            <%= Spree.t(@handbag.arrival_date.strftime("%d/%m/%Y")) %>
+          </td>
+        </tr>
+        <tr>
+          <td data-hook>
+            <strong><%= Spree.t(:completion_date) %>:</strong>
+          </td>
+          <td id='handbag_completion_date'>
+            <%= Spree.t(@handbag.completion_date.strftime("%d/%m/%Y")) %>
+          </td>
+        </tr>
+        <tr>
+          <td data-hook>
+            <strong><%= Spree.t(:price) %>:</strong>
+          </td>
+          <td id='handbag_price'>
+            <%= number_to_currency(@handbag.price, :unit => "£") %>
+          </td>
+        </tr>
+        <tr>
+          <td data-hook>
+            <strong><%= Spree.t(:postage) %>:</strong>
+          </td>
+          <td id='handbag_postage'>
+            <%= number_to_currency(@handbag.postage, :unit => "£") %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

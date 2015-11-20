@@ -96,7 +96,7 @@ module Spree
           @movedTo = 'Quality Control'
         end
         if @handbag.save
-          Spree::TestMailer.confirm_email(@handbag.user.email).deliver_now
+          #Spree::TestMailer.confirm_email(@handbag.user.email).deliver_now
           invoke_callbacks(:update, :after)
           flash[:success] = flash_message_for(@handbag, "Handbag completed, moved to #{@movedTo}")
           respond_with(@handbag) do |format|
