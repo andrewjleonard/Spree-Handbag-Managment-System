@@ -25,7 +25,7 @@ module Spree
         if params[:search]
           @handbags = Spree::Handbag.is_clean.search(params[:search]).page(params[:page]).per(50)
         else
-        @handbags = Spree::Handbag.is_clean.page(params[:page]).per(50)
+          @handbags = Spree::Handbag.is_clean.page(params[:page]).per(50)
         end
       end
       def repair
@@ -84,19 +84,19 @@ module Spree
       end
 
       def clean_completed
-        @movedTo = 'REPAIR'
+        @movedTo = 'repair'
         invoke_callbacks(:update, :before)
         if @handbag.is_repair == true
           @handbag.stage = 2
         elsif @handbag.is_repair == false && @handbag.is_colour == true
           @handbag.stage = 3
-          @movedTo = 'COLOUR'
+          @movedTo = 'colour'
         elsif @handbag.is_repair == false && @handbag.is_colour == false
           @handbag.stage = 4
-          @movedTo = 'Quality Control'
+          @movedTo = 'quality control'
         end
         if @handbag.save
-          #Spree::TestMailer.confirm_email(@handbag.user.email).deliver_now
+          Spree::HmsCommunicator.progress_email(@handbag, 'cleaned', @movedTo).deliver_now
           invoke_callbacks(:update, :after)
           flash[:success] = flash_message_for(@handbag, "Handbag completed, moved to #{@movedTo}")
           respond_with(@handbag) do |format|
@@ -116,15 +116,16 @@ module Spree
       end
 
       def repair_completed
-        @movedTo = 'COLOUR'
+        @movedTo = 'colour'
         invoke_callbacks(:update, :before)
         if @handbag.is_colour == true
           @handbag.stage = 3
         elsif @handbag.is_colour == false
           @handbag.stage = 4
-          @movedTo = 'Quality Control'
+          @movedTo = 'quality control'
         end
         if @handbag.save
+          Spree::HmsCommunicator.progress_email(@handbag, 'repaired', @movedTo).deliver_now
           invoke_callbacks(:update, :after)
           flash[:success] = flash_message_for(@handbag, "Handbag completed, moved to #{@movedTo}")
           respond_with(@handbag) do |format|
@@ -144,10 +145,11 @@ module Spree
       end
 
       def colour_completed
-        @movedTo = 'Quality Control'
+        @movedTo = 'quality control'
         invoke_callbacks(:update, :before)
         @handbag.stage = 4
         if @handbag.save
+          Spree::HmsCommunicator.progress_email(@handbag, 'coloured', @movedTo).deliver_now
           invoke_callbacks(:update, :after)
           flash[:success] = flash_message_for(@handbag, "Handbag completed, moved to #{@movedTo}")
           respond_with(@handbag) do |format|

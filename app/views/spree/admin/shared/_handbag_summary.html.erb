@@ -9,7 +9,9 @@
           <strong><%= Spree.t(:customer_name) %>:</strong>
         </td>
         <td>
+          <% if @handbag.user.bill_address %>
           <%=link_to "#{@handbag.user.bill_address.first_name} #{@handbag.user.bill_address.last_name}", admin_user_path(@handbag.user) %>
+           <% end %>
         </td>
       </tr>
       <tr>

@@ -36,4 +36,50 @@ $('.form-control.error').bind('change', function() {
     alert('Maximum file size is 5MB. Please choose a smaller file.');
   }
 });
+
+formatCustomerResult = function(customer) {
+    return customerTemplate({
+      customer: customer,
+      bill_address: customer.bill_address,
+      ship_address: customer.ship_address
+    })
+  }
+
+
+  if ($("#customer_search").length > 0) {
+    $("#customer_search").select2({
+      placeholder: Spree.translations.choose_a_customer,
+      ajax: {
+        url: Spree.routes.user_search,
+        datatype: 'json',
+        data: function(term, page) {
+          return {
+            q: term,
+            token: Spree.api_key
+          }
+        },
+        results: function(data, page) {
+          return { results: data }
+        }
+      },
+      dropdownCssClass: 'customer_search',
+      formatResult: formatCustomerResult,
+      formatSelection: function (customer) {
+        $('#handbag_user_id').val(customer.id);
+        return customer.email;
+      }
+    })
+  }
+    $("#s2id_customer_search").attr('style', 'display:block');
+
 });
+
+var count = 0
+function showField(){
+count++;
+document.getElementById("handbag_pictures"+count+"_field").style.display = 'block';
+if (count==5){
+document.getElementById("show_er").style.display = 'none';
+}
+}
+
