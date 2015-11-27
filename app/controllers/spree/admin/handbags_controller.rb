@@ -96,7 +96,7 @@ module Spree
           @movedTo = 'quality control'
         end
         if @handbag.save
-          Spree::HmsCommunicator.progress_email(@handbag, 'cleaned', @movedTo).deliver_now
+          #Spree::HmsCommunicator.progress_email(@handbag, 'cleaned', @movedTo).deliver_now
           invoke_callbacks(:update, :after)
           flash[:success] = flash_message_for(@handbag, "Handbag completed, moved to #{@movedTo}")
           respond_with(@handbag) do |format|
@@ -125,7 +125,7 @@ module Spree
           @movedTo = 'quality control'
         end
         if @handbag.save
-          Spree::HmsCommunicator.progress_email(@handbag, 'repaired', @movedTo).deliver_now
+          #Spree::HmsCommunicator.progress_email(@handbag, 'repaired', @movedTo).deliver_now
           invoke_callbacks(:update, :after)
           flash[:success] = flash_message_for(@handbag, "Handbag completed, moved to #{@movedTo}")
           respond_with(@handbag) do |format|
@@ -149,7 +149,7 @@ module Spree
         invoke_callbacks(:update, :before)
         @handbag.stage = 4
         if @handbag.save
-          Spree::HmsCommunicator.progress_email(@handbag, 'coloured', @movedTo).deliver_now
+          #Spree::HmsCommunicator.progress_email(@handbag, 'coloured', @movedTo).deliver_now
           invoke_callbacks(:update, :after)
           flash[:success] = flash_message_for(@handbag, "Handbag completed, moved to #{@movedTo}")
           respond_with(@handbag) do |format|
