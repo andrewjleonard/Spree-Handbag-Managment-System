@@ -92,12 +92,12 @@
     <% end %>
       <%= f.field_container :price, class: ['form-group'] do %>
       <%= f.label :price %>
-      <%= f.number_field :price, :class => 'form-control' %>      
+      <%= f.number_field :price, :class => 'form-control', :step => 'any' %>      
       <%= error_message_on :handbag, :price %>
     <% end %>
       <%= f.field_container :postage, class: ['form-group'] do %>
       <%= f.label :postage %>
-      <%= f.number_field :postage, :class => 'form-control' %>      
+      <%= f.number_field :postage, :class => 'form-control', :step => 'any' %>      
       <%= error_message_on :handbag, :postage %>
     <% end %>
       <%= f.field_container :pictures0, class: ['form-group'] do %>
