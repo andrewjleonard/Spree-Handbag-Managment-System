@@ -10,7 +10,7 @@ module Spree
            :to  => @handbag.user.email,
            :from => 'info@thehandbagspa.com',
            :track_opens => 'true')
-      send_text_message
+      #send_text_message
     end
 
     def send_text_message

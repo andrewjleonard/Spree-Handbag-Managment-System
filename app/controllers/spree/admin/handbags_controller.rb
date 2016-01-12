@@ -181,7 +181,9 @@ module Spree
       def create
         invoke_callbacks(:create, :before)
         @handbag.attributes = permitted_resource_params
+        @movedTo = ''
         if @handbag.save
+          Spree::HmsCommunicator.progress_email(@handbag, 'created', @movedTo).deliver_now
           invoke_callbacks(:create, :after)
           flash[:success] = flash_message_for(@handbag, :successfully_created)
           respond_with(@handbag) do |format|
