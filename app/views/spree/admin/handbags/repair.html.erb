@@ -5,10 +5,7 @@
 <% content_for :page_actions do %>
 <% end %>
 
-<%= form_tag(repair_admin_handbags_path, :method => "get", id: "search-form", class: 'form-inline') do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search by ST", :class => 'form-control' %>
-<%= submit_tag "Search", class: 'btn btn-primary' %>
-<% end %>
+<%= render 'search' %>
 
 <table class="table sortable" id="repair_handbags" data-hook data-sortable-link="<%= update_positions_admin_handbags_url %>">
   <thead>

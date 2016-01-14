@@ -3,9 +3,17 @@ module Spree
     class HandbagsController < ResourceController
 
       def index
-        @handbags = Spree::Handbag.page(params[:page]).per(50)
+        @handbags = Spree::Handbag.all.page(params[:page]).per(50)
         if params[:search]
-          @handbags = Spree::Handbag.search(params[:search]).page(params[:page]).per(50)
+          @handbags = Spree::Handbag.ransack({
+                                               m: 'or',
+                                               user_bill_address_lastname_start: params[:search],
+                                               user_bill_address_firstname_start: params[:search],
+                                               user_ship_address_lastname_start: params[:search],
+                                               user_ship_address_firstname_start: params[:search],
+                                               user_email_start: params[:search],
+                                               security_tag_start: params[:search]
+          }).result.limit(10).page(params[:page]).per(50)
         else
           @handbags = Spree::Handbag.all.page(params[:page]).per(50)
         end
@@ -23,15 +31,32 @@ module Spree
       def clean
         @handbags = Spree::Handbag.is_clean.page(params[:page]).per(50)
         if params[:search]
-          @handbags = Spree::Handbag.is_clean.search(params[:search]).page(params[:page]).per(50)
+          @handbags = Spree::Handbag.is_clean.ransack({
+                                                        m: 'or',
+                                                        user_bill_address_lastname_start: params[:search],
+                                                        user_bill_address_firstname_start: params[:search],
+                                                        user_ship_address_lastname_start: params[:search],
+                                                        user_ship_address_firstname_start: params[:search],
+                                                        user_email_start: params[:search],
+                                                        security_tag_start: params[:search]
+          }).result.limit(10).page(params[:page])
         else
           @handbags = Spree::Handbag.is_clean.page(params[:page]).per(50)
         end
       end
+
       def repair
         @handbags = Spree::Handbag.is_repair.page(params[:page]).per(50)
         if params[:search]
-          @handbags = Spree::Handbag.is_repair.search(params[:search]).page(params[:page]).per(50)
+          @handbags = Spree::Handbag.is_repair.ransack({
+                                                         m: 'or',
+                                                         user_bill_address_lastname_start: params[:search],
+                                                         user_bill_address_firstname_start: params[:search],
+                                                         user_ship_address_lastname_start: params[:search],
+                                                         user_ship_address_firstname_start: params[:search],
+                                                         user_email_start: params[:search],
+                                                         security_tag_start: params[:search]
+          }).result.limit(10).page(params[:page])
         else
           @handbags = Spree::Handbag.is_repair.page(params[:page]).per(50)
         end
@@ -39,8 +64,15 @@ module Spree
       def colour
         @handbags = Spree::Handbag.is_colour.page(params[:page]).per(50)
         if params[:search]
-          @handbags = Spree::Handbag.is_colour.search(params[:search]).page(params[:page]).per(50)
-        else
+          @handbags = Spree::Handbag.is_colour.ransack({
+                                                         m: 'or',
+                                                         user_bill_address_lastname_start: params[:search],
+                                                         user_bill_address_firstname_start: params[:search],
+                                                         user_ship_address_lastname_start: params[:search],
+                                                         user_ship_address_firstname_start: params[:search],
+                                                         user_email_start: params[:search],
+                                                         security_tag_start: params[:search]
+          }).result.limit(10).page(params[:page])
           @handbags = Spree::Handbag.is_colour.page(params[:page]).per(50)
         end
       end
@@ -48,7 +80,15 @@ module Spree
       def quality
         @handbags = Spree::Handbag.is_quality.page(params[:page]).per(50)
         if params[:search]
-          @handbags = Spree::Handbag.is_quality.search(params[:search]).page(params[:page]).per(50)
+          @handbags = Spree::Handbag.is_quality.ransack({
+                                                          m: 'or',
+                                                          user_bill_address_lastname_start: params[:search],
+                                                          user_bill_address_firstname_start: params[:search],
+                                                          user_ship_address_lastname_start: params[:search],
+                                                          user_ship_address_firstname_start: params[:search],
+                                                          user_email_start: params[:search],
+                                                          security_tag_start: params[:search]
+          }).result.limit(10).page(params[:page])
         else
           @handbags = Spree::Handbag.is_quality.page(params[:page]).per(50)
         end
@@ -57,7 +97,15 @@ module Spree
       def complete
         @handbags = Spree::Handbag.is_complete.page(params[:page]).per(50)
         if params[:search]
-          @handbags = Spree::Handbag.is_complete.search(params[:search]).page(params[:page]).per(50)
+          @handbags = Spree::Handbag.is_complete.ransack({
+                                                           m: 'or',
+                                                           user_bill_address_lastname_start: params[:search],
+                                                           user_bill_address_firstname_start: params[:search],
+                                                           user_ship_address_lastname_start: params[:search],
+                                                           user_ship_address_firstname_start: params[:search],
+                                                           user_email_start: params[:search],
+                                                           security_tag_start: params[:search]
+          }).result.limit(10).page(params[:page])
         else
           @handbags = Spree::Handbag.is_complete.page(params[:page]).per(50)
         end
@@ -65,7 +113,15 @@ module Spree
       def limbo
         @handbags = Spree::Handbag.is_limbo.page(params[:page]).per(50)
         if params[:search]
-          @handbags = Spree::Handbag.is_limbo.search(params[:search]).page(params[:page]).per(50)
+          @handbags = Spree::Handbag.is_limbo.ransack({
+                                                        m: 'or',
+                                                        user_bill_address_lastname_start: params[:search],
+                                                        user_bill_address_firstname_start: params[:search],
+                                                        user_ship_address_lastname_start: params[:search],
+                                                        user_ship_address_firstname_start: params[:search],
+                                                        user_email_start: params[:search],
+                                                        security_tag_start: params[:search]
+          }).result.limit(10).page(params[:page])
         else
           @handbags = Spree::Handbag.is_limbo.page(params[:page]).per(50)
         end
@@ -73,7 +129,15 @@ module Spree
       def archive
         @handbags = Spree::Handbag.is_archive.page(params[:page]).per(50)
         if params[:search]
-          @handbags = Spree::Handbag.is_archive.search(params[:search]).page(params[:page]).per(50)
+          @handbags = Spree::Handbag.is_archive.ransack({
+                                                          m: 'or',
+                                                          user_bill_address_lastname_start: params[:search],
+                                                          user_bill_address_firstname_start: params[:search],
+                                                          user_ship_address_lastname_start: params[:search],
+                                                          user_ship_address_firstname_start: params[:search],
+                                                          user_email_start: params[:search],
+                                                          security_tag_start: params[:search]
+          }).result.limit(10).page(params[:page])
         else
           @handbags = Spree::Handbag.is_archive.page(params[:page]).per(50)
         end
@@ -96,7 +160,10 @@ module Spree
           @movedTo = 'quality control'
         end
         if @handbag.save
-          #Spree::HmsCommunicator.progress_email(@handbag, 'cleaned', @movedTo).deliver_now
+          if @movedTo == 'quality control'
+          else
+            Spree::HmsCommunicator.progress_email(@handbag, 'cleaned', @movedTo).deliver_now
+          end
           invoke_callbacks(:update, :after)
           flash[:success] = flash_message_for(@handbag, "Handbag completed, moved to #{@movedTo}")
           respond_with(@handbag) do |format|
@@ -125,7 +192,10 @@ module Spree
           @movedTo = 'quality control'
         end
         if @handbag.save
-          #Spree::HmsCommunicator.progress_email(@handbag, 'repaired', @movedTo).deliver_now
+          if @movedTo == 'quality control'
+          else
+            Spree::HmsCommunicator.progress_email(@handbag, 'repaired', @movedTo).deliver_now
+          end
           invoke_callbacks(:update, :after)
           flash[:success] = flash_message_for(@handbag, "Handbag completed, moved to #{@movedTo}")
           respond_with(@handbag) do |format|
@@ -149,7 +219,10 @@ module Spree
         invoke_callbacks(:update, :before)
         @handbag.stage = 4
         if @handbag.save
-          #Spree::HmsCommunicator.progress_email(@handbag, 'coloured', @movedTo).deliver_now
+          if @movedTo == 'quality control'
+          else
+            Spree::HmsCommunicator.progress_email(@handbag, 'coloured', @movedTo).deliver_now
+          end
           invoke_callbacks(:update, :after)
           flash[:success] = flash_message_for(@handbag, "Handbag completed, moved to #{@movedTo}")
           respond_with(@handbag) do |format|
