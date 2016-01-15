@@ -7,7 +7,7 @@ Spree::Core::Engine.add_routes do
   namespace :admin do
     resources :handbags do
       member do
-        put :clean_completed, :repair_completed, :colour_completed, :move_limbo
+        put :clean_completed, :repair_completed, :colour_completed, :move_limbo, :quality_completed
       end
       collection do
         post :update_positions

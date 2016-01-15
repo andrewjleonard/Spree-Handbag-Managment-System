@@ -241,6 +241,30 @@ module Spree
         end
       end
 
+      def quality_completed
+        @movedTo = 'completed'
+        invoke_callbacks(:update, :before)
+        @handbag.stage = 5
+        if @handbag.save
+            Spree::HmsCommunicator.progress_email(@handbag, 'completed', @movedTo).deliver_now
+          invoke_callbacks(:update, :after)
+          flash[:success] = flash_message_for(@handbag, "Handbag completed, moved to #{@movedTo}")
+          respond_with(@handbag) do |format|
+            format.html { redirect_to :back }
+            format.js   { render :partial => "spree/admin/handbags/cleaned" }
+          end
+        else
+          invoke_callbacks(:update, :fails)
+          respond_with(@handbag) do |format|
+            format.html do
+              flash.now[:error] = @handbag.errors.full_messages.join(", ")
+              render action: 'edit'
+            end
+            format.js { render layout: false }
+          end
+        end
+      end
+
       def move_limbo
         @handbag.stage = 6
         if @handbag.save
