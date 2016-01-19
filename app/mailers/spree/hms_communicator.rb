@@ -17,7 +17,7 @@ module Spree
       mail(:subject => 'Handbag Update | The Handbag Spa',
            :to  => 'al@thehandbagspa.com',
            :from => 'info@thehandbagspa.com',
-           :body => 'hey'
+           :body => 'hey',
            :track_opens => 'true')
     end
 
