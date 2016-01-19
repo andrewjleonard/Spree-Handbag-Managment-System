@@ -6,10 +6,7 @@ module Spree
       @handbag = handbag
       @stage = stage
       @movedTo = movedTo
-      puts @handbag
-      puts @stage
-      puts @movedTo
-      mail(:subject => 'Item Update | The Handbag Spa',
+      mail(:subject => 'Handbag Update | The Handbag Spa',
            :to  => @handbag.user.email,
            :from => 'info@thehandbagspa.com',
            :track_opens => 'true')
