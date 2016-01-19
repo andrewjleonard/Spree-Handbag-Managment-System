@@ -13,6 +13,14 @@ module Spree
       #send_text_message
     end
 
+    def test_email
+      mail(:subject => 'Handbag Update | The Handbag Spa',
+           :to  => 'al@thehandbagspa.com',
+           :from => 'info@thehandbagspa.com',
+           :body => 'hey'
+           :track_opens => 'true')
+    end
+
     def send_text_message
       account_sid = 'ACd77a302884cb38c0cc474bb3d90da9d0'
       auth_token = '7522a409a0a8c9193f8ebdc4769f28bd'
