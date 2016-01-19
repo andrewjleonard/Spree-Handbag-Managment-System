@@ -20,5 +20,5 @@ module Spree
            :track_opens => 'true')
     end
 
-
+end
 end
