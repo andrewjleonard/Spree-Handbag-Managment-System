@@ -284,7 +284,7 @@ module Spree
           invoke_callbacks(:create, :after)
           flash[:success] = flash_message_for(@handbag, :successfully_created)
           respond_with(@handbag) do |format|
-            format.html { redirect_to location_after_save }
+            format.html { redirect_to admin_handbag_url(@handbag) }
             format.js   { render :layout => false }
           end
         else
