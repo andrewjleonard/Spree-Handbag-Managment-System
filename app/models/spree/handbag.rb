@@ -36,6 +36,7 @@ module Spree
       elsif is_colour == true
         self.stage = 3
       end
+      
     end
 
     # Validates the size of an uploaded picture.
