@@ -277,7 +277,9 @@ module Spree
 
       def create
         invoke_callbacks(:create, :before)
+        # Randomise the submitted image names.
         permitted_resource_params[:pictures].each{ |p| p.original_filename["."]= "#{SecureRandom.hex(4)}." }
+        
         @handbag.attributes = permitted_resource_params
         @movedTo = ''
         if @handbag.save
