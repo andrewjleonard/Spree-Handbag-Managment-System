@@ -100,7 +100,6 @@
       <%= f.number_field :postage, :class => 'form-control', :step => 'any' %>      
       <%= error_message_on :handbag, :postage %>
     <% end %>
-    hello
       <%= f.field_container :pictures0, class: ['form-group'] do %>
       <%= f.label "picture" %>
       <%= f.file_field :pictures, multiple: true, accept: 'image/jpeg,image/gif,image/png', :class => 'form-control error' %>
