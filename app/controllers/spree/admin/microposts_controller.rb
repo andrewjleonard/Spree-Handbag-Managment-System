@@ -12,7 +12,8 @@ module Spree
       flash[:success] = "Post added!"
       redirect_to :back
     else
-      render :back
+      flash[:error] = "Make sure text is added."
+      redirect_to :back
     end
   end
 

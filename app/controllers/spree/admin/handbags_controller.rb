@@ -279,7 +279,7 @@ module Spree
         invoke_callbacks(:create, :before)
         # Randomise the submitted image names.
         permitted_resource_params[:pictures].each{ |p| p.original_filename["."]= "#{SecureRandom.hex(4)}." }
-        
+
         @handbag.attributes = permitted_resource_params
         @movedTo = ''
         if @handbag.save
@@ -302,6 +302,28 @@ module Spree
           end
         end
       end
+
+        def update
+    invoke_callbacks(:update, :before)
+    permitted_resource_params[:pictures].each{ |p| p.original_filename["."]= "#{SecureRandom.hex(4)}." }
+    if @handbag.update_attributes(permitted_resource_params)
+      invoke_callbacks(:update, :after)
+      flash[:success] = flash_message_for(@handbag, :successfully_updated)
+      respond_with(@handbag) do |format|
+        format.html { redirect_to location_after_save }
+        format.js { render layout: false }
+      end
+    else
+      invoke_callbacks(:update, :fails)
+      respond_with(@handbag) do |format|
+        format.html do
+          flash.now[:error] = @handbag.errors.full_messages.join(", ")
+          render action: 'edit'
+        end
+        format.js { render layout: false }
+      end
+    end
+  end
 
       private
 
