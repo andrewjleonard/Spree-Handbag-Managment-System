@@ -305,7 +305,9 @@ module Spree
 
         def update
     invoke_callbacks(:update, :before)
+    if permitted_resource_params[:pictures]
     permitted_resource_params[:pictures].each{ |p| p.original_filename["."]= "#{SecureRandom.hex(4)}." }
+    end
     if @handbag.update_attributes(permitted_resource_params)
       invoke_callbacks(:update, :after)
       flash[:success] = flash_message_for(@handbag, :successfully_updated)
