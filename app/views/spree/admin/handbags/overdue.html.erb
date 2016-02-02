@@ -1,0 +1,33 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:overdue) %>
+<% end %>
+
+<% content_for :page_actions do %>
+<% end %>
+
+<%= render 'search' %>
+
+<table class="table sortable" id="overdue_handbags" data-hook data-sortable-link="<%= update_positions_admin_handbags_url %>">
+  <thead>
+    <tr data-hook="admin_handbags_index_headers">
+      <th class="no-border"><%= t(:id, scope: 'activerecord.attributes.spree/handbag') %></th>
+      <th><%= t(:make, scope: 'activerecord.attributes.spree/handbag') %></th>
+      <th><%= t(:colour, scope: 'activerecord.attributes.spree/handbag') %></th>
+      <th><%= t(:security_tag, scope: 'activerecord.attributes.spree/handbag') %></th>
+      <th><%= t(:completion_date, scope: 'activerecord.attributes.spree/handbag') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @handbags.each do |handbag| %>
+      <tr id="<%= spree_dom_id handbag %>" data-hook="admin_handbags_index_rows" class="<%= cycle('odd', 'even')%>">
+        <td><%= link_to handbag.id, object_url(handbag) %></td>
+        <td><%= link_to handbag.make, object_url(handbag) %></td>
+        <td><%= link_to handbag.colour, object_url(handbag) %></td>
+        <td><%= link_to handbag.security_tag, object_url(handbag) %></td>
+        <td><%= link_to handbag.completion_date.strftime("%d/%m/%Y"), object_url(handbag) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @handbags %>

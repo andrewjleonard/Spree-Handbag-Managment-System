@@ -20,7 +20,7 @@ module Spree
       end
 
       def collection_actions
-        [:index, :clean, :repair, :colour, :quality, :complete, :limbo, :archive]
+        [:index, :clean, :repair, :colour, :quality, :complete, :limbo, :archive, :overdue]
       end
 
       def new
@@ -142,6 +142,24 @@ module Spree
           @handbags = Spree::Handbag.is_archive.page(params[:page]).per(50)
         end
       end
+
+      def overdue
+        @handbags = Spree::Handbag.is_overdue.page(params[:page]).per(50)
+        if params[:search]
+          @handbags = Spree::Handbag.is_overdue.ransack({
+                                                          m: 'or',
+                                                          user_bill_address_lastname_start: params[:search],
+                                                          user_bill_address_firstname_start: params[:search],
+                                                          user_ship_address_lastname_start: params[:search],
+                                                          user_ship_address_firstname_start: params[:search],
+                                                          user_email_start: params[:search],
+                                                          security_tag_start: params[:search]
+          }).result.limit(10).page(params[:page])
+        else
+          @handbags = Spree::Handbag.is_overdue.page(params[:page]).per(50)
+        end
+      end
+
       def show
         @handbag = Spree::Handbag.find(params[:id])
         @microposts = @handbag.microposts.page(params[:page]).per(10)

@@ -5,6 +5,9 @@
 <% if @handbag.stage != 6 %>
  <%= button_link_to Spree.t(:limbo_bag), move_limbo_admin_handbag_path(@handbag), class: 'btn-warning', icon: 'edit', id: 'admin_limbo_handbag_link', :method => :put, data: { confirm: "Have you added a reason?" } %>
  <% end %>
+<% if can?(:create, Spree::Handbag) %>
+ <%= link_to_edit @handbag, class: false %>
+<% end %>
  <% end if can?(:read, Spree::Handbag) %>
 
  
