@@ -25,7 +25,7 @@
         <td><%= link_to handbag.make, object_url(handbag) %></td>
         <td><%= link_to handbag.colour, object_url(handbag) %></td>
         <td><%= link_to handbag.security_tag, object_url(handbag) %></td>
-                puts handbag.id
+               <% puts handbag.id %>
         <td><%= link_to handbag.colour_by_date.strftime("%d/%m/%Y"), object_url(handbag) %></td>
 
         <td data-hook="admin_handbags_index_row_actions" class="actions text-right">
