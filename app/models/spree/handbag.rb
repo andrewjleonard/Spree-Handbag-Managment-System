@@ -6,7 +6,8 @@ module Spree
     mount_uploaders :pictures, PictureUploader
     validate  :picture_size
     validate  :at_least_one_is_checked
-    before_create :init
+    before_validation :init, on: :create
+    validate  :date_for_stage_exists
 
     acts_as_list
     default_scope { order(:completion_date) }
@@ -53,6 +54,16 @@ module Spree
     def at_least_one_is_checked
       errors.add(:base, "Select at least one work type") unless is_clean || is_repair || is_colour
     end
+
+    def date_for_stage_exists
+         if is_clean && clean_by_date == nil
+          errors.add(:base, "Date needs to be generated for clean by date.")
+         elsif is_repair && repair_by_date == nil
+          errors.add(:base, "Date needs to be generated for repair by date.")
+         elsif is_colour && colour_by_date == nil
+          errors.add(:base, "Date needs to be generated for colour by date.")
+          end
+      end
 
     scope :is_clean, -> { where('is_clean IS true AND stage = 1').order(:clean_by_date) }
     scope :is_repair, -> { where('is_repair IS true AND stage = 2').order(:repair_by_date) }
