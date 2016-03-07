@@ -65,9 +65,9 @@ module Spree
           end
       end
 
-    scope :is_clean, -> { where('is_clean IS true AND stage = 1').order(:clean_by_date) }
-    scope :is_repair, -> { where('is_repair IS true AND stage = 2').order(:repair_by_date) }
-    scope :is_colour, -> { where('is_colour IS true AND stage = 3').order(:colour_by_date) }
+    scope :is_clean, -> { where('is_clean IS true AND stage = 1').reorder(:clean_by_date) }
+    scope :is_repair, -> { where('is_repair IS true AND stage = 2').reorder(:repair_by_date) }
+    scope :is_colour, -> { where('is_colour IS true AND stage = 3').reorder(:colour_by_date) }
     scope :is_quality, -> { where(stage: 4) }
     scope :is_complete, -> { where(stage: 5) }
     scope :is_limbo, -> { where(stage: 6) }
