@@ -73,6 +73,7 @@ module Spree
                                                          user_email_start: params[:search],
                                                          security_tag_start: params[:search]
           }).result.limit(10).page(params[:page])
+        else
           @handbags = Spree::Handbag.is_colour.page(params[:page]).per(50)
         end
       end
