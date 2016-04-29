@@ -73,7 +73,9 @@ background-color: #f6f6f6;
               Your <strong style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;"><%= @handbag.make %></strong> has completed its spa treatment.
                   </td>
                 </tr><tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;"><td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                    Please call the office on +44 (0)1423 888709 and quote item number: <strong><%= @handbag.security_tag %></strong> to make payment and arrange return delivery. Thank you for choosing The Handbag Spa x.
+                    You item has now completed its treatments and is ready to be returned to you. Please expect to receive your item within the next 5 working days. If this is not convenient then please contact the office on 01423 888709 within the next 24 hours to rearrange delivery. Please quote item number: <strong><%= @handbag.security_tag %></strong>.<br>
+                    If there is any outstanding balance on your account this will be required before the bag is dispatched.<br>
+                     Thank you for choosing The Handbag Spa x.
                     <% elsif @movedTo == '' %>
                     We have received your <strong style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;"><%= @handbag.make %></strong>. Your item security number is <strong><%= @handbag.security_tag %></strong>.
                   </td>
