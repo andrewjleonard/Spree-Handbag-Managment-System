@@ -181,7 +181,9 @@ module Spree
         if @handbag.save
           if @movedTo == 'quality control'
           else
-            Spree::HmsCommunicator.progress_email(@handbag, 'cleaned', @movedTo).deliver_now
+            unless @handbag.user.opted_out?
+              HmsCommunicator.progress_email(@handbag, 'cleaned', @movedTo).deliver_now
+            end
           end
           invoke_callbacks(:update, :after)
           flash[:success] = flash_message_for(@handbag, "Handbag completed, moved to #{@movedTo}")
@@ -213,7 +215,9 @@ module Spree
         if @handbag.save
           if @movedTo == 'quality control'
           else
-            Spree::HmsCommunicator.progress_email(@handbag, 'repaired', @movedTo).deliver_now
+            unless @handbag.user.opted_out?
+              HmsCommunicator.progress_email(@handbag, 'cleaned', @movedTo).deliver_now
+            end
           end
           invoke_callbacks(:update, :after)
           flash[:success] = flash_message_for(@handbag, "Handbag completed, moved to #{@movedTo}")
@@ -240,7 +244,9 @@ module Spree
         if @handbag.save
           if @movedTo == 'quality control'
           else
-            Spree::HmsCommunicator.progress_email(@handbag, 'coloured', @movedTo).deliver_now
+            unless @handbag.user.opted_out?
+              HmsCommunicator.progress_email(@handbag, 'cleaned', @movedTo).deliver_now
+            end
           end
           invoke_callbacks(:update, :after)
           flash[:success] = flash_message_for(@handbag, "Handbag completed, moved to #{@movedTo}")
@@ -265,7 +271,9 @@ module Spree
         invoke_callbacks(:update, :before)
         @handbag.stage = 5
         if @handbag.save
-          Spree::HmsCommunicator.progress_email(@handbag, 'completed', @movedTo).deliver_now
+            unless @handbag.user.opted_out?
+              HmsCommunicator.progress_email(@handbag, 'cleaned', @movedTo).deliver_now
+            end
           invoke_callbacks(:update, :after)
           flash[:success] = flash_message_for(@handbag, "Handbag completed, moved to #{@movedTo}")
           respond_with(@handbag) do |format|
@@ -304,7 +312,7 @@ module Spree
         @handbag.attributes = permitted_resource_params
         @movedTo = ''
         if @handbag.save
-          Spree::HmsCommunicator.progress_email(@handbag, 'created', @movedTo).deliver_now
+          HmsCommunicator.entered_email(@handbag).deliver_now
           invoke_callbacks(:create, :after)
           flash[:success] = flash_message_for(@handbag, :successfully_created)
           respond_with(@handbag) do |format|

@@ -40,7 +40,7 @@
               <%= image_tag micropost.picture.url, :style => "max-width:100%" if micropost.picture? %>
               </a>
               <span class="timestamp">
-                Added <%= time_ago_in_words(micropost.created_at) %> ago.
+                Added on <%= micropost.created_at.strftime("%d/%m/%Y") %>
               </span>
             </li>
           <% end %>
