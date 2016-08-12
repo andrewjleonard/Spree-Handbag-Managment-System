@@ -1,6 +1,6 @@
 class HmsCommunicator < ApplicationMailer
 
-	default from: 'notifications@example.com'
+	default from: 'admin@thehandbagspa.com'
  
   def test
     mail(to: "al@thehandbagspa.com", subject: 'Welcome to My Awesome Site')
