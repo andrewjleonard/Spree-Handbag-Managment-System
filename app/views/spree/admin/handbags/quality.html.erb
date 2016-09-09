@@ -1,5 +1,5 @@
 <% content_for :page_title do %>
-  <%= Spree.t(:quality_control) %>
+  <%= Spree.t(:quality_control) %> (<%= Spree::Handbag.is_quality.count %>)
 <% end %>
 
 <% content_for :page_actions do %>

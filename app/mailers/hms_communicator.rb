@@ -1,9 +1,10 @@
 class HmsCommunicator < ApplicationMailer
 
 	default from: 'admin@thehandbagspa.com'
+  default track_opens: 'true'
  
   def test
-    mail(to: "al@thehandbagspa.com", subject: 'Welcome to My Awesome Site')
+    mail(to: "al@thehandbagspa.com", subject: 'blah')
   end
 
   def entered_email(handbag)
