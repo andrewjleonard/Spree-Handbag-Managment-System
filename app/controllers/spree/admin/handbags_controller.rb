@@ -12,7 +12,8 @@ module Spree
                                                user_ship_address_lastname_start: params[:search],
                                                user_ship_address_firstname_start: params[:search],
                                                user_email_start: params[:search],
-                                               security_tag_start: params[:search]
+                                               security_tag_start: params[:search],
+                                               agent_start: params[:search]
           }).result.limit(10).page(params[:page]).per(50)
         else
           @handbags = Spree::Handbag.all.page(params[:page]).per(50)
@@ -38,7 +39,7 @@ module Spree
                                                         user_ship_address_lastname_start: params[:search],
                                                         user_ship_address_firstname_start: params[:search],
                                                         user_email_start: params[:search],
-                                                        security_tag_start: params[:search]
+                                                        security_tag_start: params[:search],
           }).result.limit(10).page(params[:page])
         else
           @handbags = Spree::Handbag.is_clean.page(params[:page]).per(50)
@@ -121,7 +122,8 @@ module Spree
                                                         user_ship_address_lastname_start: params[:search],
                                                         user_ship_address_firstname_start: params[:search],
                                                         user_email_start: params[:search],
-                                                        security_tag_start: params[:search]
+                                                        security_tag_start: params[:search],
+                                                        agent_start: params[:search]
           }).result.limit(10).page(params[:page])
         else
           @handbags = Spree::Handbag.is_limbo.page(params[:page]).per(50)
@@ -137,7 +139,8 @@ module Spree
                                                           user_ship_address_lastname_start: params[:search],
                                                           user_ship_address_firstname_start: params[:search],
                                                           user_email_start: params[:search],
-                                                          security_tag_start: params[:search]
+                                                          security_tag_start: params[:search],
+                                                          agent_start: params[:search]
           }).result.limit(10).page(params[:page])
         else
           @handbags = Spree::Handbag.is_archive.page(params[:page]).per(50)
@@ -154,7 +157,8 @@ module Spree
                                                           user_ship_address_lastname_start: params[:search],
                                                           user_ship_address_firstname_start: params[:search],
                                                           user_email_start: params[:search],
-                                                          security_tag_start: params[:search]
+                                                          security_tag_start: params[:search],
+                                                          agent_start: params[:search]
           }).result.limit(10).page(params[:page])
         else
           @handbags = Spree::Handbag.is_overdue.page(params[:page]).per(50)
@@ -338,7 +342,7 @@ module Spree
         if permitted_resource_params[:pictures]
           permitted_resource_params[:pictures].each{ |p| p.original_filename["."]= "#{SecureRandom.hex(4)}." }
         end
-        
+
         if @handbag.update_attributes(permitted_resource_params)
           invoke_callbacks(:update, :after)
           flash[:success] = flash_message_for(@handbag, :successfully_updated)
