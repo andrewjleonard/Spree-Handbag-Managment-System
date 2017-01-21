@@ -6,11 +6,12 @@
  <%= button_link_to Spree.t(:limbo_bag), move_limbo_admin_handbag_path(@handbag), class: 'btn-warning', icon: 'edit', id: 'admin_limbo_handbag_link', :method => :put, data: { confirm: "Have you added a reason?" } %>
  <% end %>
 <% if can?(:create, Spree::Handbag) %>
- <%= link_to_edit @handbag, class: false %>
+<%= button_link_to Spree.t(:edit_bag), edit_admin_handbag_path(@handbag), class: 'btn-info', icon: 'edit', id: 'admin_edit_handbag_link' %>
+
 <% end %>
  <% end if can?(:read, Spree::Handbag) %>
 
- 
+
 
 <div class="row">
   <div class="col-md-8">

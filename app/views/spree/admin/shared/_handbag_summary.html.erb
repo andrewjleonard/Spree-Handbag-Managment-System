@@ -147,6 +147,14 @@
             <%= number_to_currency(@handbag.postage, :unit => "£") %>
           </td>
         </tr>
+        <tr>
+          <td data-hook>
+            <strong><%= Spree.t(:payment_method) %>:</strong>
+          </td>
+          <td id='handbag_payment_method'>
+            <%= @handbag.payment_method %>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>

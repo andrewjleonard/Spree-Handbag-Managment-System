@@ -8,6 +8,7 @@ module Spree
     validate  :at_least_one_is_checked
     before_validation :init, on: :create
     validate  :date_for_stage_exists
+    validate  :if_quality_controlled
 
     acts_as_list
     default_scope { order(:completion_date) }
@@ -37,7 +38,7 @@ module Spree
       elsif is_colour == true
         self.stage = 3
       end
-      
+
     end
 
     # Validates the size of an uploaded picture.
@@ -53,6 +54,14 @@ module Spree
 
     def at_least_one_is_checked
       errors.add(:base, "Select at least one work type") unless is_clean || is_repair || is_colour
+    end
+
+    def if_quality_controlled
+      if is_quality_controlled == true && !user.opted_out?
+        user.opt_out
+      elsif is_quality_controlled == false && user.opted_out?
+        user.opt_in
+      end
     end
 
     def date_for_stage_exists

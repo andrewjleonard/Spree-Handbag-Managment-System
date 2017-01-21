@@ -15,6 +15,7 @@
       <th><%= t(:colour, scope: 'activerecord.attributes.spree/handbag') %></th>
       <th><%= t(:security_tag, scope: 'activerecord.attributes.spree/handbag') %></th>
       <th><%= t(:clean_by_date, scope: 'activerecord.attributes.spree/handbag') %></th>
+      <th><%= t(:flagged, scope: 'activerecord.attributes.spree/handbag') %></th>
       <th data-hook="admin_handbags_index_header_actions" class="actions"></th>
     </tr>
   </thead>
@@ -27,7 +28,10 @@
         <td><%= link_to handbag.security_tag, object_url(handbag) %></td>
 
         <td><%= link_to handbag.clean_by_date.strftime("%d/%m/%Y"), object_url(handbag) %></td>
-
+        <td<% if handbag.two_week_turnaround || handbag.returned_bag || handbag.is_quality_controlled || handbag.trade %>
+        class="flagged"
+        <% end %>
+         ></td>
         <td data-hook="admin_handbags_index_row_actions" class="actions text-right">
           <%= link_to_with_icon('check', 'Complete', clean_completed_admin_handbag_path(handbag), :remote=> true, :method => :put,data: { confirm: "Are you sure?" }, class: 'btn btn-success btn-sm complete-resource') %>
         </td>
