@@ -2,11 +2,11 @@ module Spree
   class Handbag < ActiveRecord::Base
     belongs_to :user
     has_many :microposts , class_name: Spree::Micropost, dependent: :destroy
-    validates :make,:colour,:arrival_date,:completion_date,:user_id,:work_details,:security_tag,:postage,:price, presence: true
+    validates :make,:colour,:arrival_date,:completion_date,:user_id,:work_details,:security_tag,:postage,:price,:payment_method, presence: true
     mount_uploaders :pictures, PictureUploader
     validate  :picture_size
     validate  :at_least_one_is_checked
-    before_validation :init, on: :create
+    validate :init, on: :create
     validate  :date_for_stage_exists
     validate  :if_quality_controlled
 
