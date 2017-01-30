@@ -211,7 +211,6 @@ module Spree
               flash.now[:error] = @handbag.errors.full_messages.join(", ")
               render action: 'edit'
             end
-            format.js { render layout: false }
           end
         end
       end
@@ -245,7 +244,6 @@ module Spree
               flash.now[:error] = @handbag.errors.full_messages.join(", ")
               render action: 'edit'
             end
-            format.js { render layout: false }
           end
         end
       end
@@ -274,7 +272,6 @@ module Spree
               flash.now[:error] = @handbag.errors.full_messages.join(", ")
               render action: 'edit'
             end
-            format.js { render layout: false }
           end
         end
       end
@@ -300,7 +297,6 @@ module Spree
               flash.now[:error] = @handbag.errors.full_messages.join(", ")
               render action: 'edit'
             end
-            format.js { render layout: false }
           end
         end
       end
