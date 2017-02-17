@@ -82,6 +82,6 @@ module Spree
     scope :is_limbo, -> { where(stage: 6) }
     scope :is_archive, -> { where(stage: 7) }
     scope :is_overdue, -> { where(stage: 8) }
-
+    scope :is_complaints, -> { where(stage: 9) }
   end
 end

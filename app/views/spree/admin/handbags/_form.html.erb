@@ -25,7 +25,7 @@
     <%= f.field_container :stage, class: ['form-group'] do %>
       <%= f.label :stage %>
       <%= error_message_on :handbag, :stage %>
-      <%= select(:handbag, :stage, [['Clean', 1], ['Repair', 2], ['Colour', 3], ['Quality Control', 4], ['Complete', 5], ['Limbo', 6], ['Archive', 7], ['Overdue', 8]]) %>
+      <%= select(:handbag, :stage, [['Clean', 1], ['Repair', 2], ['Colour', 3], ['Quality Control', 4], ['Complete', 5], ['Limbo', 6], ['Archive', 7], ['Overdue', 8], ['Complaints', 9]]) %>
     <% end %>
       <%= f.field_container :clean_by_date, class: ['form-group'] do %>
       <%= f.label :clean_by_date %>
