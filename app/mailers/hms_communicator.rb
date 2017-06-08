@@ -2,7 +2,7 @@ class HmsCommunicator < ApplicationMailer
 
 	default from: 'admin@thehandbagspa.com'
   default track_opens: 'true'
- 
+
   def test
     mail(to: "al@thehandbagspa.com", subject: 'blah')
   end
@@ -24,5 +24,9 @@ class HmsCommunicator < ApplicationMailer
     mail(to: @handbag.user.email, subject: 'Item Update | The Handbag Spa')
   end
 
+	def final_completed_email(handbag)
+	@handbag = handbag
+	mail(to: @handbag.user.email, subject: 'Item Update | The Handbag Spa')
+end
 
 end
