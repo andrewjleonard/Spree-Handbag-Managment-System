@@ -40,8 +40,9 @@ module Spree
                                                         user_ship_address_lastname_start: params[:search],
                                                         user_ship_address_firstname_start: params[:search],
                                                         user_email_start: params[:search],
-                                                        make_start: params[:search],
                                                         security_tag_start: params[:search],
+                                                        make_start: params[:search],
+                                                        agent_start: params[:search]
           }).result.limit(10).page(params[:page])
         else
           @handbags = Spree::Handbag.is_clean.page(params[:page]).per(50)
@@ -58,8 +59,9 @@ module Spree
                                                          user_ship_address_lastname_start: params[:search],
                                                          user_ship_address_firstname_start: params[:search],
                                                          user_email_start: params[:search],
+                                                         security_tag_start: params[:search],
                                                          make_start: params[:search],
-                                                         security_tag_start: params[:search]
+                                                         agent_start: params[:search]
           }).result.limit(10).page(params[:page])
         else
           @handbags = Spree::Handbag.is_repair.page(params[:page]).per(50)
@@ -75,8 +77,9 @@ module Spree
                                                          user_ship_address_lastname_start: params[:search],
                                                          user_ship_address_firstname_start: params[:search],
                                                          user_email_start: params[:search],
+                                                         security_tag_start: params[:search],
                                                          make_start: params[:search],
-                                                         security_tag_start: params[:search]
+                                                         agent_start: params[:search]
           }).result.limit(10).page(params[:page])
         else
           @handbags = Spree::Handbag.is_colour.page(params[:page]).per(50)
@@ -93,8 +96,9 @@ module Spree
                                                           user_ship_address_lastname_start: params[:search],
                                                           user_ship_address_firstname_start: params[:search],
                                                           user_email_start: params[:search],
+                                                          security_tag_start: params[:search],
                                                           make_start: params[:search],
-                                                          security_tag_start: params[:search]
+                                                          agent_start: params[:search]
           }).result.limit(10).page(params[:page])
         else
           @handbags = Spree::Handbag.is_quality.page(params[:page]).per(50)
@@ -111,8 +115,9 @@ module Spree
                                                            user_ship_address_lastname_start: params[:search],
                                                            user_ship_address_firstname_start: params[:search],
                                                            user_email_start: params[:search],
+                                                           security_tag_start: params[:search],
                                                            make_start: params[:search],
-                                                           security_tag_start: params[:search]
+                                                           agent_start: params[:search]
           }).result.limit(10).page(params[:page])
         else
           @handbags = Spree::Handbag.is_complete.page(params[:page]).per(50)
@@ -128,8 +133,8 @@ module Spree
                                                         user_ship_address_lastname_start: params[:search],
                                                         user_ship_address_firstname_start: params[:search],
                                                         user_email_start: params[:search],
-                                                        make_start: params[:search],
                                                         security_tag_start: params[:search],
+                                                        make_start: params[:search],
                                                         agent_start: params[:search]
           }).result.limit(10).page(params[:page])
         else
@@ -146,8 +151,8 @@ module Spree
                                                         user_ship_address_lastname_start: params[:search],
                                                         user_ship_address_firstname_start: params[:search],
                                                         user_email_start: params[:search],
-                                                        make_start: params[:search],
                                                         security_tag_start: params[:search],
+                                                        make_start: params[:search],
                                                         agent_start: params[:search]
           }).result.limit(10).page(params[:page])
         else
@@ -164,8 +169,8 @@ module Spree
                                                           user_ship_address_lastname_start: params[:search],
                                                           user_ship_address_firstname_start: params[:search],
                                                           user_email_start: params[:search],
-                                                          make_start: params[:search],
                                                           security_tag_start: params[:search],
+                                                          make_start: params[:search],
                                                           agent_start: params[:search]
           }).result.limit(10).page(params[:page])
         else
@@ -183,8 +188,8 @@ module Spree
                                                           user_ship_address_lastname_start: params[:search],
                                                           user_ship_address_firstname_start: params[:search],
                                                           user_email_start: params[:search],
-                                                          make_start: params[:search],
                                                           security_tag_start: params[:search],
+                                                          make_start: params[:search],
                                                           agent_start: params[:search]
           }).result.limit(10).page(params[:page])
         else
