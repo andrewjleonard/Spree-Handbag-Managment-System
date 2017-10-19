@@ -21,4 +21,11 @@ Spree::Admin::UsersController.class_eval do
       render :new
     end
   end
+  def index
+  respond_with(@collection) do |format|
+    format.html
+    format.json { render :json => json_data }
+    format.csv { send_data Spree::User.all.to_csv, filename: "users-#{Date.today}.csv" }
+  end
+end
 end
